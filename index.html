@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SyntaxHosting – Discord Bot Hosting</title>
+  <title>SyntaxHosting – Game Server Panel</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -15,20 +15,20 @@
     }
 
     :root {
-      --primary: #5865F2; /* Discord Blurple */
-      --primary-dark: #4752c4;
-      --primary-light: #7983f5;
-      --secondary: #eb459e; /* Discord Pink */
-      --accent: #5865F2;
-      --success: #57F287; /* Discord Green */
-      --warning: #FEE75C; /* Discord Yellow */
-      --danger: #ED4245; /* Discord Red */
-      --dark: #0a0c10;
-      --dark-light: #1a1d24;
-      --dark-card: #23272a; /* Discord Dark */
-      --text: #ffffff;
-      --text-dim: #b9bbbe;
-      --border: #2c2f33;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --primary-light: #818cf8;
+      --secondary: #06b6d4;
+      --accent: #8b5cf6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --dark: #030712;
+      --dark-light: #111827;
+      --dark-card: #1f2937;
+      --text: #f9fafb;
+      --text-dim: #9ca3af;
+      --border: #374151;
       --glass: rgba(255, 255, 255, 0.05);
       --glass-border: rgba(255, 255, 255, 0.1);
     }
@@ -50,8 +50,8 @@
       right: 0;
       height: 100vh;
       background: 
-        radial-gradient(circle at 20% 20%, rgba(88, 101, 242, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(235, 69, 158, 0.15) 0%, transparent 40%);
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
       pointer-events: none;
       z-index: 0;
     }
@@ -63,8 +63,8 @@
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
-      max-width: 1200px;
-      background: rgba(35, 39, 42, 0.8);
+      max-width: 1400px;
+      background: rgba(31, 41, 55, 0.8);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -79,7 +79,7 @@
     .logo {
       font-size: 1.5rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
@@ -116,18 +116,18 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
-      box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
     }
 
     .btn-danger {
-      background: linear-gradient(135deg, var(--danger), #c03537);
+      background: linear-gradient(135deg, var(--danger), #dc2626);
       color: white;
     }
 
@@ -136,6 +136,14 @@
       font-size: 0.85rem;
       border-radius: 10px;
       font-weight: 500;
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: white;
+    }
+    .btn-success:hover {
+      background: #0d9488;
     }
 
     /* Cards */
@@ -147,21 +155,15 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
-      border-color: var(--primary);
-    }
-
     .glass-card {
-      background: rgba(35, 39, 42, 0.7);
+      background: rgba(31, 41, 55, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 20px;
       padding: 24px;
     }
 
-    /* Landing Page */
+    /* Landing Page - Minimal */
     .landing {
       min-height: 100vh;
       display: flex;
@@ -173,25 +175,12 @@
       z-index: 1;
     }
 
-    .hero-tag {
-      display: inline-block;
-      padding: 8px 16px;
-      background: rgba(88, 101, 242, 0.1);
-      border: 1px solid rgba(88, 101, 242, 0.3);
-      border-radius: 100px;
-      color: var(--primary-light);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin-bottom: 30px;
-    }
-
     .hero-title {
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 800;
       line-height: 1.1;
       text-align: center;
-      max-width: 900px;
+      max-width: 800px;
       margin-bottom: 24px;
       background: linear-gradient(135deg, white, var(--text-dim));
       -webkit-background-clip: text;
@@ -199,7 +188,7 @@
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -219,49 +208,11 @@
       justify-content: center;
     }
 
-    /* Stats - now as text only, no images */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 80px;
-      max-width: 900px;
-    }
-
-    @media (max-width: 640px) {
-      .stats-grid {
-        grid-template-columns: repeat(1, 1fr);
-      }
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 24px;
-      background: var(--dark-card);
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.2;
-    }
-
-    .stat-label {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-      margin-top: 8px;
-    }
-
-    /* Discord Bots Section */
-    .bots-section {
+    /* Pricing Section - Minimal */
+    .pricing-section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 20px;
+      padding: 60px 20px;
     }
 
     .section-title {
@@ -277,44 +228,6 @@
       max-width: 600px;
       margin: 0 auto 48px;
       font-size: 1.1rem;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .feature-card {
-      background: var(--dark-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
-    }
-
-    .feature-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .feature-desc {
-      color: var(--text-dim);
-      font-size: 0.9rem;
-    }
-
-    /* Pricing Section */
-    .pricing-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 20px;
     }
 
     .pricing-grid {
@@ -338,7 +251,7 @@
 
     .pricing-card.featured {
       border-color: var(--primary);
-      background: linear-gradient(145deg, var(--dark-card), rgba(88, 101, 242, 0.1));
+      background: linear-gradient(145deg, var(--dark-card), rgba(99, 102, 241, 0.1));
       transform: scale(1.05);
     }
 
@@ -353,7 +266,7 @@
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
       padding: 6px 20px;
       border-radius: 100px;
@@ -371,7 +284,7 @@
       font-size: 3rem;
       font-weight: 800;
       margin: 20px 0;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -406,7 +319,7 @@
     /* Dashboard */
     .dashboard {
       padding-top: 100px;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;
@@ -496,6 +409,16 @@
       background: var(--warning);
     }
 
+    .status-installing {
+      background: var(--primary);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
     .server-info {
       flex: 1;
       min-width: 200px;
@@ -518,9 +441,9 @@
       border-radius: 100px;
       font-size: 0.8rem;
       font-weight: 600;
-      background: rgba(88, 101, 242, 0.1);
+      background: rgba(99, 102, 241, 0.1);
       color: var(--primary);
-      border: 1px solid rgba(88, 101, 242, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.3);
     }
 
     .server-actions {
@@ -529,8 +452,8 @@
       margin-left: auto;
     }
 
-    /* Console */
-    .console-page {
+    /* Server Detail Page (Pterodactyl Style) */
+    .server-detail {
       padding-top: 100px;
       max-width: 1400px;
       margin: 0 auto;
@@ -538,7 +461,7 @@
       padding-right: 20px;
     }
 
-    .console-header {
+    .server-detail-header {
       display: flex;
       align-items: center;
       gap: 20px;
@@ -561,26 +484,53 @@
       border-color: var(--primary);
     }
 
-    .console-layout {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 20px;
+    .server-detail-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 30px;
+      overflow-x: auto;
+      padding-bottom: 2px;
     }
 
-    @media (max-width: 900px) {
-      .console-layout {
-        grid-template-columns: 1fr;
-      }
+    .tab-btn {
+      padding: 12px 24px;
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
     }
 
-    .terminal {
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Console Tab */
+    .console-container {
       background: #0a0c10;
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
     }
 
-    .terminal-header {
+    .console-header-bar {
       background: #1a1e24;
       padding: 12px 16px;
       display: flex;
@@ -589,17 +539,17 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .terminal-dot {
+    .console-dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
     }
 
-    .terminal-dot.red { background: #ff5f56; }
-    .terminal-dot.yellow { background: #ffbd2e; }
-    .terminal-dot.green { background: #27c93f; }
+    .console-dot.red { background: #ff5f56; }
+    .console-dot.yellow { background: #ffbd2e; }
+    .console-dot.green { background: #27c93f; }
 
-    .terminal-title {
+    .console-title {
       flex: 1;
       text-align: center;
       color: var(--text-dim);
@@ -607,7 +557,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    .terminal-body {
+    .console-body {
       height: 400px;
       overflow-y: auto;
       padding: 16px;
@@ -617,17 +567,17 @@
       line-height: 1.6;
     }
 
-    .terminal-line {
+    .console-line {
       margin-bottom: 4px;
     }
 
-    .terminal-line.success { color: var(--success); }
-    .terminal-line.error { color: var(--danger); }
-    .terminal-line.warning { color: var(--warning); }
-    .terminal-line.info { color: var(--primary); }
-    .terminal-line.dim { color: var(--text-dim); }
+    .console-line.success { color: var(--success); }
+    .console-line.error { color: var(--danger); }
+    .console-line.warning { color: var(--warning); }
+    .console-line.info { color: var(--primary); }
+    .console-line.dim { color: var(--text-dim); }
 
-    .terminal-input {
+    .console-input-area {
       display: flex;
       align-items: center;
       gap: 8px;
@@ -636,13 +586,13 @@
       border-top: 1px solid var(--border);
     }
 
-    .terminal-prompt {
+    .console-prompt {
       color: var(--success);
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85rem;
     }
 
-    .terminal-input-field {
+    .console-input {
       flex: 1;
       background: none;
       border: none;
@@ -652,73 +602,155 @@
       outline: none;
     }
 
-    /* Sidebar */
-    .console-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .sidebar-card {
+    /* Files Tab */
+    .files-container {
       background: var(--dark-card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
-    }
-
-    .sidebar-title {
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-dim);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .resource-bar {
-      margin-bottom: 16px;
-    }
-
-    .resource-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      margin-bottom: 6px;
-      color: var(--text-dim);
-    }
-
-    .progress-track {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 4px;
       overflow: hidden;
     }
 
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 4px;
-      transition: width 0.3s;
-    }
-
-    .info-row {
+    .files-header {
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
+      align-items: center;
     }
 
-    .info-row:last-child {
-      border-bottom: none;
-    }
-
-    .info-key {
+    .files-breadcrumb {
+      display: flex;
+      gap: 8px;
+      align-items: center;
       color: var(--text-dim);
     }
 
-    .info-value {
+    .breadcrumb-item {
+      cursor: pointer;
+    }
+    .breadcrumb-item:hover {
+      color: var(--primary);
+    }
+    .breadcrumb-separator {
+      color: var(--border);
+    }
+
+    .files-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .files-table th {
+      text-align: left;
+      padding: 12px 16px;
+      color: var(--text-dim);
       font-weight: 600;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .files-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .files-table tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .file-icon {
+      margin-right: 12px;
+      font-size: 1.1rem;
+    }
+
+    .file-name {
+      cursor: pointer;
+    }
+    .file-name:hover {
+      color: var(--primary);
+    }
+
+    .file-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    /* Startup Tab */
+    .startup-container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 20px;
+    }
+
+    .startup-main {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .startup-sidebar {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .startup-variable {
+      margin-bottom: 24px;
+    }
+
+    .variable-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: var(--text-dim);
+    }
+
+    .variable-input {
+      width: 100%;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
       font-family: 'JetBrains Mono', monospace;
+    }
+
+    .docker-image {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 12px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    /* Settings Tab */
+    .settings-container {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 600px;
+    }
+
+    .settings-group {
+      margin-bottom: 24px;
+    }
+
+    .settings-group h3 {
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .danger-zone {
+      border: 1px solid var(--danger);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 30px;
     }
 
     /* Modal */
@@ -749,9 +781,11 @@
       border: 1px solid var(--border);
       border-radius: 30px;
       padding: 40px;
-      max-width: 500px;
+      max-width: 600px;
       width: 90%;
       position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
     .modal-close {
@@ -833,7 +867,7 @@
 
     .plan-option.selected {
       border-color: var(--primary);
-      background: rgba(88, 101, 242, 0.1);
+      background: rgba(99, 102, 241, 0.1);
     }
 
     /* Toast */
@@ -879,10 +913,47 @@
       border-top-color: var(--primary);
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
+      display: inline-block;
     }
 
     @keyframes spin {
       to { transform: rotate(360deg); }
+    }
+
+    .egg-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .egg-item {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .egg-item:hover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .egg-item.selected {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .egg-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .egg-desc {
+      color: var(--text-dim);
+      font-size: 0.8rem;
     }
   </style>
 </head>
@@ -891,7 +962,6 @@
   <nav class="nav">
     <div class="logo">SyntaxHosting</div>
     <div class="nav-links" id="navUnauth">
-      <button class="btn btn-ghost" onclick="showSection('pricing')">Pricing</button>
       <button class="btn btn-ghost" onclick="showAuth('login')">Login</button>
       <button class="btn btn-primary" onclick="showAuth('register')">Get Started</button>
     </div>
@@ -905,67 +975,21 @@
     </div>
   </nav>
 
-  <!-- Landing Page -->
+  <!-- Landing Page (Minimal) -->
   <div id="landingPage">
     <section class="landing">
-      <div class="hero-tag">⚡ 99.9% Uptime Guarantee</div>
-      <h1 class="hero-title">Discord Bot Hosting<br><span>without compromises.</span></h1>
-      <p class="hero-sub">Deploy your Discord bots in seconds. NVMe SSDs, 99.9% uptime and 24/7 support for your bots.</p>
+      <h1 class="hero-title">Game Server Hosting<br><span>without compromises.</span></h1>
+      <p class="hero-sub">Deploy your game servers in seconds. Full control, powerful hardware, instant setup.</p>
       <div class="hero-cta">
         <button class="btn btn-primary" onclick="showAuth('register')">Start for free</button>
         <button class="btn btn-ghost" onclick="scrollToPricing()">View pricing →</button>
-      </div>
-
-      <!-- Stats as text only - no images -->
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">99.9%</div>
-          <div class="stat-label">Uptime SLA</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">&lt;1ms</div>
-          <div class="stat-label">Latency</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">NVMe</div>
-          <div class="stat-label">SSD Storage</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Discord Bot Features -->
-    <section class="bots-section">
-      <h2 class="section-title">Perfect for Discord Bots</h2>
-      <p class="section-sub">Everything your bot needs to run 24/7 without interruptions</p>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <div class="feature-title">Python & JavaScript</div>
-          <div class="feature-desc">Support for discord.py, nextcord, py-cord, discord.js and more</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <div class="feature-title">Always Online</div>
-          <div class="feature-desc">Your bot stays online 24/7 with automatic restarts</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <div class="feature-title">DDoS Protection</div>
-          <div class="feature-desc">Enterprise-grade protection for your bot</div>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <div class="feature-title">Real-time Metrics</div>
-          <div class="feature-desc">Monitor CPU, RAM and uptime in real-time</div>
-        </div>
       </div>
     </section>
 
     <!-- Pricing Section -->
     <section class="pricing-section" id="pricing">
       <h2 class="section-title">Simple Pricing</h2>
-      <p class="section-sub">Choose the plan that fits your bot. Upgrade or downgrade anytime.</p>
+      <p class="section-sub">Choose the plan that fits your needs. Upgrade or downgrade anytime.</p>
       
       <div class="pricing-grid">
         <!-- Free Plan -->
@@ -975,10 +999,9 @@
           <ul class="plan-features">
             <li>256 MB RAM</li>
             <li>2 GB NVMe SSD</li>
-            <li>1 bot maximum</li>
+            <li>1 server maximum</li>
             <li>Basic Console</li>
             <li>Community Support</li>
-            <li>99% Uptime</li>
           </ul>
           <button class="btn btn-ghost" style="width:100%" onclick="showAuth('register')">Start free</button>
         </div>
@@ -991,12 +1014,11 @@
           <ul class="plan-features">
             <li>2 GB RAM</li>
             <li>20 GB NVMe SSD</li>
-            <li>Unlimited bots</li>
+            <li>Unlimited servers</li>
             <li>Full Console Access</li>
             <li>Priority Support</li>
-            <li>99.9% Uptime Guarantee</li>
             <li>Automatic Backups</li>
-            <li>Custom Domains</li>
+            <li>Custom Startup</li>
           </ul>
           <button class="btn btn-primary" style="width:100%" onclick="showAuth('register')">Get Premium</button>
         </div>
@@ -1004,7 +1026,7 @@
     </section>
 
     <footer class="footer">
-      © 2026 SyntaxHosting. All rights reserved. Discord Bot Hosting specialized.
+      © 2026 SyntaxHosting. All rights reserved.
     </footer>
   </div>
 
@@ -1062,9 +1084,9 @@
       <div class="dash-header">
         <div class="welcome-text">
           <h1>Welcome, <span id="dashboardUsername">User</span>!</h1>
-          <p style="color:var(--text-dim)">Manage your Discord bots here</p>
+          <p style="color:var(--text-dim)">Manage your game servers</p>
         </div>
-        <button class="btn btn-primary" onclick="openCreateModal()">+ New Bot</button>
+        <button class="btn btn-primary" onclick="openCreateModal()">+ Create Server</button>
       </div>
 
       <div class="dash-stats" id="dashboardStats">
@@ -1072,126 +1094,231 @@
       </div>
 
       <div style="margin-top:40px;">
-        <h2 style="font-size:1.5rem;margin-bottom:20px;">Your Bots</h2>
+        <h2 style="font-size:1.5rem;margin-bottom:20px;">Your Servers</h2>
         <div id="serversList" class="servers-list">
-          <!-- Bots will be loaded here -->
+          <!-- Servers will be loaded here -->
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Console Page -->
-  <div id="consolePage" class="hidden">
-    <div class="console-page">
-      <div class="console-header">
+  <!-- Server Detail Page (Pterodactyl Style) -->
+  <div id="serverDetailPage" class="hidden">
+    <div class="server-detail">
+      <div class="server-detail-header">
         <button class="back-btn" onclick="showDashboard()">← Dashboard</button>
         <div>
-          <h1 id="consoleServerName" style="font-size:1.8rem;">Bot Name</h1>
-          <p style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;" id="consoleServerId">ID: -</p>
+          <h1 id="detailServerName" style="font-size:1.8rem;">Server Name</h1>
+          <p style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;" id="detailServerId">ID: -</p>
         </div>
         <div style="margin-left:auto;display:flex;gap:8px;">
-          <button class="btn btn-sm btn-primary" onclick="consoleStart()">▶ Start</button>
-          <button class="btn btn-sm btn-ghost" onclick="consoleStop()">⏹ Stop</button>
-          <button class="btn btn-sm btn-ghost" onclick="consoleRestart()">↻ Restart</button>
+          <button class="btn btn-sm btn-success" onclick="serverAction('start')">▶ Start</button>
+          <button class="btn btn-sm btn-ghost" onclick="serverAction('stop')">⏹ Stop</button>
+          <button class="btn btn-sm btn-ghost" onclick="serverAction('restart')">↻ Restart</button>
+          <button class="btn btn-sm btn-ghost" onclick="serverAction('kill')">⛔ Kill</button>
         </div>
       </div>
 
-      <div class="console-layout">
-        <div class="terminal">
-          <div class="terminal-header">
-            <div class="terminal-dot red"></div>
-            <div class="terminal-dot yellow"></div>
-            <div class="terminal-dot green"></div>
-            <div class="terminal-title" id="terminalTitle">bot-console</div>
+      <!-- Tabs -->
+      <div class="server-detail-tabs">
+        <button class="tab-btn active" onclick="switchTab('console')">Console</button>
+        <button class="tab-btn" onclick="switchTab('files')">Files</button>
+        <button class="tab-btn" onclick="switchTab('startup')">Startup</button>
+        <button class="tab-btn" onclick="switchTab('settings')">Settings</button>
+      </div>
+
+      <!-- Console Tab -->
+      <div id="tabConsole" class="tab-content active">
+        <div class="console-container">
+          <div class="console-header-bar">
+            <div class="console-dot red"></div>
+            <div class="console-dot yellow"></div>
+            <div class="console-dot green"></div>
+            <div class="console-title" id="detailConsoleTitle">console</div>
           </div>
-          <div class="terminal-body" id="terminalBody"></div>
-          <div class="terminal-input">
-            <span class="terminal-prompt">$</span>
-            <input type="text" class="terminal-input-field" id="terminalInput" placeholder="Enter command..." onkeydown="handleTerminalKey(event)">
+          <div class="console-body" id="consoleBody">
+            <div class="console-line info">=== SyntaxHosting Panel v1.0 ===</div>
+            <div class="console-line dim">Server ID: loading...</div>
+            <div class="console-line dim">Type 'help' for available commands</div>
+            <div class="console-line"></div>
+          </div>
+          <div class="console-input-area">
+            <span class="console-prompt">$</span>
+            <input type="text" class="console-input" id="consoleInput" placeholder="Enter command..." onkeydown="handleConsoleKey(event)">
           </div>
         </div>
+      </div>
 
-        <div class="console-sidebar">
-          <div class="sidebar-card">
-            <div class="sidebar-title">Resources</div>
-            <div class="resource-bar">
-              <div class="resource-label"><span>RAM</span><span id="ramUsage">0 / 256 MB</span></div>
-              <div class="progress-track"><div class="progress-fill" id="ramBar" style="width:0%"></div></div>
+      <!-- Files Tab -->
+      <div id="tabFiles" class="tab-content">
+        <div class="files-container">
+          <div class="files-header">
+            <div class="files-breadcrumb" id="fileBreadcrumb">
+              <span class="breadcrumb-item" onclick="navigateFile('')">/</span>
             </div>
-            <div class="resource-bar">
-              <div class="resource-label"><span>CPU</span><span id="cpuUsage">0%</span></div>
-              <div class="progress-track"><div class="progress-fill" id="cpuBar" style="width:0%"></div></div>
-            </div>
-            <div class="resource-bar">
-              <div class="resource-label"><span>SSD</span><span id="ssdUsage">0 / 2 GB</span></div>
-              <div class="progress-track"><div class="progress-fill" id="ssdBar" style="width:5%"></div></div>
+            <div>
+              <button class="btn btn-sm btn-ghost" onclick="uploadFile()">📤 Upload</button>
+              <button class="btn btn-sm btn-ghost" onclick="createFolder()">📁 New Folder</button>
+              <button class="btn btn-sm btn-ghost" onclick="createFile()">📄 New File</button>
             </div>
           </div>
+          <table class="files-table" id="filesTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Last Modified</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="filesBody">
+              <!-- Files will be loaded here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-          <div class="sidebar-card">
-            <div class="sidebar-title">Bot Info</div>
-            <div class="info-row"><span class="info-key">Status</span><span class="info-value" id="serverStatus">Offline</span></div>
-            <div class="info-row"><span class="info-key">Plan</span><span class="info-value" id="serverPlan">-</span></div>
-            <div class="info-row"><span class="info-key">RAM</span><span class="info-value" id="serverRam">-</span></div>
-            <div class="info-row"><span class="info-key">SSD</span><span class="info-value" id="serverSsd">-</span></div>
-            <div class="info-row"><span class="info-key">Created</span><span class="info-value" id="serverCreated">-</span></div>
+      <!-- Startup Tab -->
+      <div id="tabStartup" class="tab-content">
+        <div class="startup-container">
+          <div class="startup-main">
+            <h3 style="margin-bottom:20px;">Startup Configuration</h3>
+            
+            <div class="startup-variable">
+              <div class="variable-label">
+                <span>Docker Image</span>
+                <span style="color:var(--text-dim);font-family:'JetBrains Mono'">Read-only</span>
+              </div>
+              <div class="docker-image" id="dockerImage">ghcr.io/pterodactyl/games:source</div>
+            </div>
+
+            <div class="startup-variable">
+              <div class="variable-label">
+                <span>Startup Command</span>
+                <span style="color:var(--text-dim)">Variable</span>
+              </div>
+              <input type="text" class="variable-input" id="startupCommand" value="./server" placeholder="Startup command">
+            </div>
+
+            <h4 style="margin:30px 0 16px;">Variables</h4>
+            
+            <div id="variablesContainer">
+              <!-- Variables will be loaded here -->
+            </div>
+
+            <button class="btn btn-primary" style="margin-top:20px;" onclick="saveStartup()">Save Changes</button>
+          </div>
+          
+          <div class="startup-sidebar">
+            <h4 style="margin-bottom:16px;">Egg Information</h4>
+            <div id="eggInfo">
+              <p><strong>Server Egg:</strong> <span id="eggName">Minecraft</span></p>
+              <p><strong>Author:</strong> <span id="eggAuthor">Pterodactyl</span></p>
+              <p><strong>Description:</strong> <span id="eggDesc">Minecraft Java Edition server</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings Tab -->
+      <div id="tabSettings" class="tab-content">
+        <div class="settings-container">
+          <h3 style="margin-bottom:20px;">Server Settings</h3>
+          
+          <div class="settings-group">
+            <label>Server Name</label>
+            <input type="text" class="form-input" id="settingsServerName" value="My Server">
+            <button class="btn btn-sm btn-primary" style="margin-top:10px;" onclick="updateServerName()">Update Name</button>
           </div>
 
-          <div class="sidebar-card">
-            <div class="sidebar-title">Quick Commands</div>
-            <div style="display:flex;flex-direction:column;gap:8px;">
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('help')">help - Show commands</button>
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('status')">status - Bot status</button>
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('logs')">logs - Show logs</button>
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('clear')">clear - Clear console</button>
-            </div>
+          <div class="settings-group">
+            <label>Server Description</label>
+            <input type="text" class="form-input" id="settingsDescription" placeholder="Optional description">
+          </div>
+
+          <div class="danger-zone">
+            <h4 style="color:var(--danger);margin-bottom:16px;">Danger Zone</h4>
+            <button class="btn btn-sm btn-danger" onclick="reinstallServer()">Reinstall Server</button>
+            <button class="btn btn-sm btn-danger" style="margin-left:10px;" onclick="deleteCurrentServer()">Delete Server</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Create Bot Modal -->
+  <!-- Create Server Modal (Pterodactyl Style) -->
   <div class="modal-overlay" id="createModal">
     <div class="modal">
       <button class="modal-close" onclick="closeCreateModal()">✕</button>
-      <h2 class="modal-title">Create New Bot</h2>
-      <p class="modal-sub">Deploy your Discord bot in seconds</p>
+      <h2 class="modal-title">Create New Server</h2>
+      <p class="modal-sub">Configure your server deployment</p>
 
       <div id="freeLimitNote" class="hidden" style="background:rgba(245,158,11,0.1);border:1px solid var(--warning);border-radius:12px;padding:12px;margin-bottom:20px;color:var(--warning);">
-        ⚠️ Free plan allows only 1 bot. Upgrade for unlimited bots.
+        ⚠️ Free plan allows only 1 server. Upgrade for unlimited servers.
       </div>
 
       <div id="createError" class="hidden" style="background:rgba(239,68,68,0.1);border:1px solid var(--danger);border-radius:12px;padding:12px;margin-bottom:20px;color:var(--danger);"></div>
 
-      <div class="form-group">
-        <label>Bot Name</label>
-        <input type="text" class="form-input" id="serverName" placeholder="my-discord-bot">
-      </div>
+      <!-- Step 1: Basic Info -->
+      <div id="createStep1">
+        <div class="form-group">
+          <label>Server Name</label>
+          <input type="text" class="form-input" id="createServerName" placeholder="my-awesome-server">
+        </div>
 
-      <div class="form-group">
-        <label>Choose Plan</label>
-        <div class="plan-selector">
-          <div class="plan-option selected" id="freePlan" onclick="selectPlan('free')">
-            <div style="font-weight:700;margin-bottom:4px;">Free Plan</div>
-            <div style="color:var(--text-dim);font-size:0.85rem;">256MB RAM · 2GB SSD · 1 bot</div>
-          </div>
-          <div class="plan-option" id="premiumPlan" onclick="selectPlan('premium')">
-            <div style="font-weight:700;margin-bottom:4px;">Premium</div>
-            <div style="color:var(--text-dim);font-size:0.85rem;">2GB RAM · 20GB SSD · Unlimited bots · €2.99/mo</div>
+        <div class="form-group">
+          <label>Choose Plan</label>
+          <div class="plan-selector">
+            <div class="plan-option selected" id="createFreePlan" onclick="selectCreatePlan('free')">
+              <div style="font-weight:700;margin-bottom:4px;">Free Plan</div>
+              <div style="color:var(--text-dim);font-size:0.85rem;">256MB RAM · 2GB SSD · 1 server</div>
+            </div>
+            <div class="plan-option" id="createPremiumPlan" onclick="selectCreatePlan('premium')">
+              <div style="font-weight:700;margin-bottom:4px;">Premium</div>
+              <div style="color:var(--text-dim);font-size:0.85rem;">2GB RAM · 20GB SSD · Unlimited · €2.99/mo</div>
+            </div>
           </div>
         </div>
+
+        <button class="btn btn-primary" style="width:100%;padding:16px;" onclick="nextCreateStep()">Next: Choose Egg →</button>
       </div>
 
-      <div class="form-group">
-        <label>Bot Type</label>
-        <select class="form-input" id="serverType">
-          <option value="python">Python (discord.py, nextcord, py-cord)</option>
-          <option value="javascript">JavaScript (discord.js)</option>
-        </select>
-      </div>
+      <!-- Step 2: Choose Egg -->
+      <div id="createStep2" class="hidden">
+        <h3 style="margin-bottom:16px;">Select Server Type</h3>
+        
+        <div class="egg-list">
+          <div class="egg-item selected" onclick="selectEgg('minecraft')">
+            <div class="egg-name">🎮 Minecraft</div>
+            <div class="egg-desc">Java Edition server</div>
+          </div>
+          <div class="egg-item" onclick="selectEgg('minecraft-bedrock')">
+            <div class="egg-name">📱 Minecraft Bedrock</div>
+            <div class="egg-desc">Bedrock Edition server</div>
+          </div>
+          <div class="egg-item" onclick="selectEgg('source')">
+            <div class="egg-name">🔫 Source Games</div>
+            <div class="egg-desc">CS:GO, TF2, etc.</div>
+          </div>
+          <div class="egg-item" onclick="selectEgg('nodejs')">
+            <div class="egg-name">⬢ Node.js</div>
+            <div class="egg-desc">JavaScript applications</div>
+          </div>
+          <div class="egg-item" onclick="selectEgg('python')">
+            <div class="egg-name">🐍 Python</div>
+            <div class="egg-desc">Python apps & bots</div>
+          </div>
+          <div class="egg-item" onclick="selectEgg('discord')">
+            <div class="egg-name">🤖 Discord Bot</div>
+            <div class="egg-desc">discord.py, discord.js</div>
+          </div>
+        </div>
 
-      <button class="btn btn-primary" style="width:100%;padding:16px;" onclick="createServer()" id="createBtn">Deploy Bot</button>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <button class="btn btn-ghost" style="flex:1;" onclick="prevCreateStep()">Back</button>
+          <button class="btn btn-primary" style="flex:2;" onclick="createServer()" id="createBtn">Create Server</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1262,24 +1389,53 @@
     // State
     window.serversData = {};
     window.selectedPlan = 'free';
-    window.currentConsoleServer = null;
+    window.selectedEgg = 'minecraft';
+    window.currentServer = null;
+    window.currentPath = '';
     window.resourceInterval = null;
     window.consoleHistory = [];
     window.consoleHistoryIndex = -1;
+    window.createStep = 1;
+
+    // Mock files data
+    window.mockFiles = {
+      '': [
+        { name: 'server.jar', size: '45.2 MB', modified: '2026-02-20 14:30', type: 'file' },
+        { name: 'server.properties', size: '2.1 KB', modified: '2026-02-21 09:15', type: 'file' },
+        { name: 'plugins', size: '-', modified: '2026-02-19', type: 'folder' },
+        { name: 'logs', size: '-', modified: '2026-02-22', type: 'folder' },
+        { name: 'world', size: '-', modified: '2026-02-20', type: 'folder' },
+        { name: 'eula.txt', size: '168 B', modified: '2026-02-18', type: 'file' }
+      ],
+      'plugins': [
+        { name: 'Essentials.jar', size: '1.8 MB', modified: '2026-02-20', type: 'file' },
+        { name: 'WorldEdit.jar', size: '3.2 MB', modified: '2026-02-20', type: 'file' },
+        { name: 'Permissions.jar', size: '0.9 MB', modified: '2026-02-19', type: 'file' }
+      ],
+      'logs': [
+        { name: 'latest.log', size: '156 KB', modified: '2026-02-22 10:23', type: 'file' },
+        { name: 'blabla.log', size: '45 KB', modified: '2026-02-21', type: 'file' }
+      ],
+      'world': [
+        { name: 'region', size: '-', modified: '2026-02-20', type: 'folder' },
+        { name: 'data', size: '-', modified: '2026-02-20', type: 'folder' },
+        { name: 'level.dat', size: '3.4 MB', modified: '2026-02-20', type: 'file' }
+      ]
+    };
 
     // Page Navigation
     function showLanding() {
       document.getElementById('landingPage').classList.remove('hidden');
       document.getElementById('authPage').classList.add('hidden');
       document.getElementById('dashboardPage').classList.add('hidden');
-      document.getElementById('consolePage').classList.add('hidden');
+      document.getElementById('serverDetailPage').classList.add('hidden');
     }
 
     function showAuth(mode) {
       document.getElementById('landingPage').classList.add('hidden');
       document.getElementById('authPage').classList.remove('hidden');
       document.getElementById('dashboardPage').classList.add('hidden');
-      document.getElementById('consolePage').classList.add('hidden');
+      document.getElementById('serverDetailPage').classList.add('hidden');
 
       if (mode === 'login') {
         document.getElementById('authTitle').textContent = 'Welcome back';
@@ -1299,21 +1455,15 @@
       document.getElementById('landingPage').classList.add('hidden');
       document.getElementById('authPage').classList.add('hidden');
       document.getElementById('dashboardPage').classList.remove('hidden');
-      document.getElementById('consolePage').classList.add('hidden');
+      document.getElementById('serverDetailPage').classList.add('hidden');
       if (window.resourceInterval) {
         clearInterval(window.resourceInterval);
         window.resourceInterval = null;
       }
     }
 
-    function showSection(section) {
-      showLanding();
-      if (section === 'pricing') {
-        document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
     function scrollToPricing() {
+      showLanding();
       document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1322,10 +1472,9 @@
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
       const btn = document.getElementById('loginBtn');
-      const errorEl = document.getElementById('authError');
 
       if (!email || !password) {
-        showError('Please enter email and password');
+        showAuthError('Please enter email and password');
         return;
       }
 
@@ -1337,7 +1486,7 @@
       } catch (err) {
         btn.disabled = false;
         btn.innerHTML = 'Sign In';
-        showError(getFirebaseError(err.code));
+        showAuthError(getFirebaseError(err.code));
       }
     }
 
@@ -1346,14 +1495,13 @@
       const email = document.getElementById('regEmail').value;
       const password = document.getElementById('regPassword').value;
       const btn = document.getElementById('regBtn');
-      const errorEl = document.getElementById('authError');
 
       if (!name || !email || !password) {
-        showError('Please fill in all fields');
+        showAuthError('Please fill in all fields');
         return;
       }
       if (password.length < 6) {
-        showError('Password must be at least 6 characters');
+        showAuthError('Password must be at least 6 characters');
         return;
       }
 
@@ -1366,7 +1514,7 @@
       } catch (err) {
         btn.disabled = false;
         btn.innerHTML = 'Create Account';
-        showError(getFirebaseError(err.code));
+        showAuthError(getFirebaseError(err.code));
       }
     }
 
@@ -1375,7 +1523,7 @@
       showToast('Logged out successfully', 'info');
     }
 
-    function showError(msg) {
+    function showAuthError(msg) {
       const el = document.getElementById('authError');
       el.textContent = msg;
       el.classList.remove('hidden');
@@ -1394,7 +1542,7 @@
       return errors[code] || 'An error occurred';
     }
 
-    // Servers (Bots)
+    // Servers
     async function loadServers() {
       if (!window.currentUser) return;
       
@@ -1413,10 +1561,10 @@
       if (Object.keys(servers).length === 0) {
         container.innerHTML = `
           <div class="card" style="text-align:center;padding:60px;">
-            <div style="font-size:3rem;margin-bottom:16px;">🤖</div>
-            <h3 style="margin-bottom:8px;">No bots yet</h3>
-            <p style="color:var(--text-dim);margin-bottom:20px;">Create your first Discord bot to get started</p>
-            <button class="btn btn-primary" onclick="openCreateModal()">Create Bot</button>
+            <div style="font-size:3rem;margin-bottom:16px;">🎮</div>
+            <h3 style="margin-bottom:8px;">No servers yet</h3>
+            <p style="color:var(--text-dim);margin-bottom:20px;">Create your first server to get started</p>
+            <button class="btn btn-primary" onclick="openCreateModal()">Create Server</button>
           </div>
         `;
         return;
@@ -1425,8 +1573,15 @@
       container.innerHTML = '';
       Object.entries(servers).forEach(([id, server]) => {
         const statusClass = server.status === 'online' ? 'status-online' : 
-                           server.status === 'starting' ? 'status-starting' : 'status-offline';
+                           server.status === 'starting' ? 'status-starting' : 
+                           server.status === 'installing' ? 'status-installing' : 'status-offline';
         const date = server.createdAt ? new Date(server.createdAt).toLocaleDateString('en-US') : '?';
+        
+        let typeIcon = '🎮';
+        if (server.egg === 'minecraft') typeIcon = '⛏️';
+        else if (server.egg === 'nodejs') typeIcon = '⬢';
+        else if (server.egg === 'python') typeIcon = '🐍';
+        else if (server.egg === 'discord') typeIcon = '🤖';
         
         const el = document.createElement('div');
         el.className = 'server-item';
@@ -1434,11 +1589,11 @@
           <div class="server-status ${statusClass}"></div>
           <div class="server-info">
             <div class="server-name">${escapeHtml(server.name)}</div>
-            <div class="server-meta">${server.type === 'python' ? '🐍 Python' : '📘 JavaScript'} · ${server.ram} RAM · Created ${date}</div>
+            <div class="server-meta">${typeIcon} ${server.eggName || 'Minecraft'} · ${server.ram} RAM · Created ${date}</div>
           </div>
           <div class="server-plan">${server.plan === 'premium' ? 'Premium' : 'Free'}</div>
           <div class="server-actions">
-            <button class="btn btn-sm btn-primary" onclick="openConsole('${id}')">Console</button>
+            <button class="btn btn-sm btn-primary" onclick="openServerDetail('${id}')">Manage</button>
             <button class="btn btn-sm btn-danger" onclick="deleteServer('${id}')">Delete</button>
           </div>
         `;
@@ -1457,7 +1612,7 @@
 
       statsContainer.innerHTML = `
         <div class="stat-card">
-          <div class="stat-card-label">Bots</div>
+          <div class="stat-card-label">Servers</div>
           <div class="stat-card-value">${totalServers}</div>
         </div>
         <div class="stat-card">
@@ -1476,16 +1631,16 @@
     }
 
     async function deleteServer(serverId) {
-      if (!window.currentUser || !confirm('Delete this bot? This action cannot be undone.')) return;
+      if (!window.currentUser || !confirm('Delete this server? This action cannot be undone.')) return;
       
       try {
         await window.remove(window.ref(window.db, `servers/${window.currentUser.uid}/${serverId}`));
-        showToast('Bot deleted', 'info');
-        if (window.currentConsoleServer === serverId) {
+        showToast('Server deleted', 'info');
+        if (window.currentServer === serverId) {
           showDashboard();
         }
       } catch (err) {
-        showToast('Error deleting bot', 'error');
+        showToast('Error deleting server', 'error');
       }
     }
 
@@ -1499,19 +1654,22 @@
       const servers = Object.values(window.serversData || {});
       const freeCount = servers.filter(s => s.plan === 'free').length;
       const note = document.getElementById('freeLimitNote');
-      const freePlan = document.getElementById('freePlan');
+      const freePlan = document.getElementById('createFreePlan');
 
       if (freeCount >= 1) {
         note.classList.remove('hidden');
         freePlan.classList.add('disabled');
-        selectPlan('premium');
+        selectCreatePlan('premium');
       } else {
         note.classList.add('hidden');
         freePlan.classList.remove('disabled');
-        selectPlan('free');
+        selectCreatePlan('free');
       }
 
-      document.getElementById('serverName').value = '';
+      window.createStep = 1;
+      document.getElementById('createStep1').classList.remove('hidden');
+      document.getElementById('createStep2').classList.add('hidden');
+      document.getElementById('createServerName').value = '';
       document.getElementById('createError').classList.add('hidden');
       document.getElementById('createModal').classList.add('open');
     }
@@ -1520,9 +1678,9 @@
       document.getElementById('createModal').classList.remove('open');
     }
 
-    window.selectPlan = function(plan) {
-      const freePlan = document.getElementById('freePlan');
-      const premiumPlan = document.getElementById('premiumPlan');
+    window.selectCreatePlan = function(plan) {
+      const freePlan = document.getElementById('createFreePlan');
+      const premiumPlan = document.getElementById('createPremiumPlan');
       
       if (plan === 'free' && freePlan.classList.contains('disabled')) return;
       
@@ -1536,34 +1694,51 @@
       }
     };
 
-    async function createServer() {
-      if (!window.currentUser) return;
-
-      const name = document.getElementById('serverName').value.trim();
-      const type = document.getElementById('serverType').value;
-      const btn = document.getElementById('createBtn');
-      const errorEl = document.getElementById('createError');
-
+    function nextCreateStep() {
+      const name = document.getElementById('createServerName').value.trim();
       if (!name) {
-        showCreateError('Please enter a bot name');
+        showCreateError('Please enter a server name');
         return;
       }
       if (!/^[a-zA-Z0-9_-]+$/.test(name)) {
         showCreateError('Only letters, numbers, - and _ allowed');
         return;
       }
+      
+      window.createStep = 2;
+      document.getElementById('createStep1').classList.add('hidden');
+      document.getElementById('createStep2').classList.remove('hidden');
+    }
+
+    function prevCreateStep() {
+      window.createStep = 1;
+      document.getElementById('createStep1').classList.remove('hidden');
+      document.getElementById('createStep2').classList.add('hidden');
+    }
+
+    window.selectEgg = function(egg) {
+      window.selectedEgg = egg;
+      document.querySelectorAll('.egg-item').forEach(el => el.classList.remove('selected'));
+      event.currentTarget.classList.add('selected');
+    };
+
+    async function createServer() {
+      if (!window.currentUser) return;
+
+      const name = document.getElementById('createServerName').value.trim();
+      const btn = document.getElementById('createBtn');
 
       const servers = Object.values(window.serversData || {});
       if (window.selectedPlan === 'free') {
         const freeServers = servers.filter(s => s.plan === 'free');
         if (freeServers.length >= 1) {
-          showCreateError('Free plan allows only 1 bot. Upgrade for more.');
+          showCreateError('Free plan allows only 1 server. Upgrade for more.');
           return;
         }
       }
 
       btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span> Deploying...';
+      btn.innerHTML = '<span class="spinner"></span> Creating...';
 
       try {
         const newRef = window.push(window.ref(window.db, `servers/${window.currentUser.uid}`));
@@ -1571,24 +1746,56 @@
           { ram: '256MB', ssd: '2GB' } : 
           { ram: '2GB', ssd: '20GB' };
 
+        const eggNames = {
+          'minecraft': 'Minecraft',
+          'minecraft-bedrock': 'Minecraft Bedrock',
+          'source': 'Source Games',
+          'nodejs': 'Node.js',
+          'python': 'Python',
+          'discord': 'Discord Bot'
+        };
+
         await window.set(newRef, {
           name,
           plan: window.selectedPlan,
-          type,
-          status: 'offline',
+          egg: window.selectedEgg,
+          eggName: eggNames[window.selectedEgg] || 'Custom',
+          status: 'installing',
           ram: specs.ram,
           ssd: specs.ssd,
-          createdAt: Date.now()
+          createdAt: Date.now(),
+          startup: './start.sh',
+          dockerImage: getDockerImage(window.selectedEgg)
         });
 
         closeCreateModal();
-        showToast('Bot deployed successfully!', 'success');
+        showToast('Server created! Installing...', 'success');
+        
+        // Simulate installation completion after 5 seconds
+        setTimeout(() => {
+          if (window.currentUser) {
+            window.set(window.ref(window.db, `servers/${window.currentUser.uid}/${newRef.key}/status`), 'offline');
+          }
+        }, 5000);
+        
       } catch (err) {
         showCreateError('Error: ' + err.message);
       }
 
       btn.disabled = false;
-      btn.innerHTML = 'Deploy Bot';
+      btn.innerHTML = 'Create Server';
+    }
+
+    function getDockerImage(egg) {
+      const images = {
+        'minecraft': 'ghcr.io/pterodactyl/games:minecraft',
+        'minecraft-bedrock': 'ghcr.io/pterodactyl/games:bedrock',
+        'source': 'ghcr.io/pterodactyl/games:source',
+        'nodejs': 'node:18-slim',
+        'python': 'python:3.11-slim',
+        'discord': 'node:18-slim'
+      };
+      return images[egg] || 'alpine:latest';
     }
 
     function showCreateError(msg) {
@@ -1597,106 +1804,96 @@
       el.classList.remove('hidden');
     }
 
-    // Console Functions
-    function openConsole(serverId) {
+    // Server Detail
+    function openServerDetail(serverId) {
       const server = (window.serversData || {})[serverId];
       if (!server) return;
 
-      window.currentConsoleServer = serverId;
-      window.currentConsoleData = server;
+      window.currentServer = serverId;
+      window.currentServerData = server;
 
-      document.getElementById('consoleServerName').textContent = server.name;
-      document.getElementById('consoleServerId').textContent = `ID: ${serverId.substring(0,8)}...`;
-      document.getElementById('terminalTitle').textContent = `${server.name} — console`;
+      document.getElementById('detailServerName').textContent = server.name;
+      document.getElementById('detailServerId').textContent = `ID: ${serverId.substring(0,8)}...`;
+      document.getElementById('detailConsoleTitle').textContent = `${server.name} — console`;
 
-      // Update sidebar
-      document.getElementById('serverPlan').textContent = server.plan === 'premium' ? 'Premium' : 'Free';
-      document.getElementById('serverRam').textContent = server.ram;
-      document.getElementById('serverSsd').textContent = server.ssd;
-      document.getElementById('serverCreated').textContent = server.createdAt ? new Date(server.createdAt).toLocaleDateString('en-US') : '?';
-      
-      const maxRam = server.ram === '2GB' ? 2048 : 256;
-      const maxSsd = server.ssd === '20GB' ? 20 : 2;
-      
-      document.getElementById('ramUsage').textContent = `0 / ${server.ram}`;
-      document.getElementById('ssdUsage').textContent = `0 / ${server.ssd}`;
-      document.getElementById('ramBar').style.width = '0%';
-      document.getElementById('cpuBar').style.width = '0%';
-      document.getElementById('ssdBar').style.width = '5%';
+      // Update console
+      const consoleBody = document.getElementById('consoleBody');
+      consoleBody.innerHTML = '';
+      printToConsole('info', '=== SyntaxHosting Panel v1.0 ===');
+      printToConsole('dim', `Server: ${server.name}`);
+      printToConsole('dim', `Type: ${server.eggName || 'Minecraft'}`);
+      printToConsole('dim', `Status: ${server.status || 'offline'}`);
+      printToConsole('dim', `Type 'help' for available commands`);
+      printToConsole('', '');
 
-      updateServerStatus(server.status || 'offline');
-
-      // Clear terminal
-      const terminal = document.getElementById('terminalBody');
-      terminal.innerHTML = '';
-      window.consoleHistory = [];
-
-      printToTerminal('info', `=== SyntaxHosting Bot Console v1.0 ===`);
-      printToTerminal('dim', `Bot: ${server.name}`);
-      printToTerminal('dim', `Type: ${server.type === 'python' ? 'Python (discord.py)' : 'JavaScript (discord.js)'}`);
-      printToTerminal('dim', `Plan: ${server.plan === 'premium' ? 'Premium' : 'Free'} | RAM: ${server.ram} | SSD: ${server.ssd}`);
-      printToTerminal('dim', `Type 'help' for available commands`);
-      printToTerminal('', '');
-
-      if (server.status === 'online') {
-        printToTerminal('success', `[${getTime()}] Bot is online`);
-        startResourceSim(maxRam, maxSsd);
+      if (server.status === 'installing') {
+        printToConsole('warning', '📦 Server is installing... Please wait.');
+      } else if (server.status === 'online') {
+        printToConsole('success', '✅ Server is online');
       } else {
-        printToTerminal('warning', `[${getTime()}] Bot is offline. Use 'start' to start it.`);
+        printToConsole('dim', '⏹️ Server is offline');
       }
+
+      // Load files
+      loadFiles('');
+
+      // Load startup
+      loadStartup();
+
+      // Switch to first tab
+      switchTab('console');
 
       showDashboard();
       document.getElementById('dashboardPage').classList.add('hidden');
-      document.getElementById('consolePage').classList.remove('hidden');
-      document.getElementById('terminalInput').focus();
+      document.getElementById('serverDetailPage').classList.remove('hidden');
     }
 
-    function getTime() {
-      return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      
+      document.querySelector(`.tab-btn[onclick="switchTab('${tab}')"]`).classList.add('active');
+      document.getElementById(`tab${tab.charAt(0).toUpperCase() + tab.slice(1)}`).classList.add('active');
     }
 
-    function printToTerminal(type, text) {
-      const terminal = document.getElementById('terminalBody');
+    // Console Functions
+    function printToConsole(type, text) {
+      const consoleBody = document.getElementById('consoleBody');
       const line = document.createElement('div');
-      line.className = `terminal-line ${type}`;
+      line.className = `console-line ${type}`;
       line.textContent = text;
-      terminal.appendChild(line);
-      terminal.scrollTop = terminal.scrollHeight;
+      consoleBody.appendChild(line);
+      consoleBody.scrollTop = consoleBody.scrollHeight;
     }
 
-    function handleTerminalKey(e) {
+    function handleConsoleKey(e) {
       if (e.key === 'Enter') {
-        const input = document.getElementById('terminalInput');
+        const input = document.getElementById('consoleInput');
         const cmd = input.value.trim();
         if (!cmd) return;
 
         window.consoleHistory.unshift(cmd);
         window.consoleHistoryIndex = -1;
         
-        printToTerminal('', `$ ${cmd}`);
+        printToConsole('', `$ ${cmd}`);
         input.value = '';
         processConsoleCommand(cmd);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         if (window.consoleHistoryIndex < window.consoleHistory.length - 1) {
           window.consoleHistoryIndex++;
-          document.getElementById('terminalInput').value = window.consoleHistory[window.consoleHistoryIndex];
+          document.getElementById('consoleInput').value = window.consoleHistory[window.consoleHistoryIndex];
         }
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         if (window.consoleHistoryIndex > 0) {
           window.consoleHistoryIndex--;
-          document.getElementById('terminalInput').value = window.consoleHistory[window.consoleHistoryIndex];
+          document.getElementById('consoleInput').value = window.consoleHistory[window.consoleHistoryIndex];
         } else {
           window.consoleHistoryIndex = -1;
-          document.getElementById('terminalInput').value = '';
+          document.getElementById('consoleInput').value = '';
         }
       }
-    }
-
-    function quickCommand(cmd) {
-      document.getElementById('terminalInput').value = cmd;
-      handleTerminalKey({ key: 'Enter' });
     }
 
     function processConsoleCommand(cmd) {
@@ -1705,185 +1902,256 @@
 
       switch(main) {
         case 'help':
-          printToTerminal('info', 'Available commands:');
-          printToTerminal('', '  start     - Start the bot');
-          printToTerminal('', '  stop      - Stop the bot');
-          printToTerminal('', '  restart   - Restart the bot');
-          printToTerminal('', '  status    - Show bot status');
-          printToTerminal('', '  logs      - Show recent logs');
-          printToTerminal('', '  info      - Show bot information');
-          printToTerminal('', '  clear     - Clear console');
-          printToTerminal('', '  echo [txt] - Echo text');
+          printToConsole('info', 'Available commands:');
+          printToConsole('', '  start     - Start server');
+          printToConsole('', '  stop      - Stop server');
+          printToConsole('', '  restart   - Restart server');
+          printToConsole('', '  status    - Show server status');
+          printToConsole('', '  clear     - Clear console');
+          printToConsole('', '  help      - Show this help');
           break;
 
         case 'start':
-          consoleStart();
+          serverAction('start');
           break;
 
         case 'stop':
-          consoleStop();
+          serverAction('stop');
           break;
 
         case 'restart':
-          consoleRestart();
+          serverAction('restart');
           break;
 
         case 'status':
-          printToTerminal('', `Status: ${document.getElementById('serverStatus').textContent}`);
-          break;
-
-        case 'logs':
-          printToTerminal('info', '[SYSTEM] Bot started');
-          printToTerminal('info', '[DISCORD] Logged in as Bot');
-          printToTerminal('success', '[DISCORD] Ready!');
-          break;
-
-        case 'info':
-          const server = window.currentConsoleData;
-          printToTerminal('info', 'Bot Information:');
-          printToTerminal('', `  Name:   ${server.name}`);
-          printToTerminal('', `  Type:   ${server.type === 'python' ? 'Python' : 'JavaScript'}`);
-          printToTerminal('', `  Plan:   ${server.plan}`);
-          printToTerminal('', `  RAM:    ${server.ram}`);
-          printToTerminal('', `  SSD:    ${server.ssd}`);
+          printToConsole('', `Status: ${document.getElementById('serverStatus')?.textContent || 'unknown'}`);
           break;
 
         case 'clear':
-          document.getElementById('terminalBody').innerHTML = '';
-          break;
-
-        case 'echo':
-          printToTerminal('', parts.slice(1).join(' '));
+          document.getElementById('consoleBody').innerHTML = '';
           break;
 
         default:
-          printToTerminal('error', `Command not found: ${main}. Type 'help' for available commands.`);
+          printToConsole('error', `Command not found: ${main}`);
       }
     }
 
-    function consoleStart() {
-      if (!window.currentConsoleServer) return;
+    function serverAction(action) {
+      if (!window.currentServer) return;
       
-      printToTerminal('warning', `[${getTime()}] Starting bot...`);
-      window.serverStatus = 'starting';
-      updateServerStatus('starting');
-
-      setTimeout(() => {
-        printToTerminal('info', `[${getTime()}] Loading bot files...`);
-      }, 800);
+      const statusEl = document.getElementById('serverStatus');
       
-      setTimeout(() => {
-        printToTerminal('info', `[${getTime()}] Initializing Discord client...`);
-      }, 1600);
-      
-      setTimeout(() => {
-        window.serverStatus = 'online';
-        updateServerStatus('online');
-        printToTerminal('success', `[${getTime()}] Bot started successfully!`);
-        
-        const server = window.currentConsoleData;
-        const maxRam = server.ram === '2GB' ? 2048 : 256;
-        const maxSsd = server.ssd === '20GB' ? 20 : 2;
-        startResourceSim(maxRam, maxSsd);
-        
-        // Update in Firebase
-        if (window.currentUser) {
-          window.set(window.ref(window.db, `servers/${window.currentUser.uid}/${window.currentConsoleServer}/status`), 'online');
-        }
-      }, 2500);
-    }
-
-    function consoleStop() {
-      if (!window.currentConsoleServer) return;
-      
-      printToTerminal('warning', `[${getTime()}] Stopping bot...`);
-      
-      if (window.resourceInterval) {
-        clearInterval(window.resourceInterval);
-        window.resourceInterval = null;
-      }
-
-      setTimeout(() => {
-        window.serverStatus = 'offline';
-        updateServerStatus('offline');
-        printToTerminal('info', `[${getTime()}] Bot stopped`);
-        
-        // Reset resources
-        document.getElementById('ramBar').style.width = '0%';
-        document.getElementById('cpuBar').style.width = '0%';
-        document.getElementById('ramUsage').textContent = `0 / ${window.currentConsoleData.ram}`;
-        document.getElementById('cpuUsage').textContent = '0%';
-        
-        if (window.currentUser) {
-          window.set(window.ref(window.db, `servers/${window.currentUser.uid}/${window.currentConsoleServer}/status`), 'offline');
-        }
-      }, 1000);
-    }
-
-    function consoleRestart() {
-      if (!window.currentConsoleServer) return;
-      
-      printToTerminal('warning', `[${getTime()}] Restarting bot...`);
-      
-      if (window.resourceInterval) {
-        clearInterval(window.resourceInterval);
-        window.resourceInterval = null;
-      }
-
-      window.serverStatus = 'starting';
-      updateServerStatus('starting');
-
-      setTimeout(() => {
-        printToTerminal('info', `[${getTime()}] Bot stopped. Restarting...`);
-        
-        setTimeout(() => {
-          window.serverStatus = 'online';
-          updateServerStatus('online');
-          printToTerminal('success', `[${getTime()}] Bot restarted successfully!`);
-          
-          const server = window.currentConsoleData;
-          const maxRam = server.ram === '2GB' ? 2048 : 256;
-          const maxSsd = server.ssd === '20GB' ? 20 : 2;
-          startResourceSim(maxRam, maxSsd);
-          
-          if (window.currentUser) {
-            window.set(window.ref(window.db, `servers/${window.currentUser.uid}/${window.currentConsoleServer}/status`), 'online');
+      switch(action) {
+        case 'start':
+          printToConsole('warning', 'Starting server...');
+          setTimeout(() => {
+            printToConsole('success', 'Server started successfully');
+            if (statusEl) statusEl.textContent = 'Online';
+          }, 2000);
+          break;
+        case 'stop':
+          printToConsole('warning', 'Stopping server...');
+          setTimeout(() => {
+            printToConsole('info', 'Server stopped');
+            if (statusEl) statusEl.textContent = 'Offline';
+          }, 1500);
+          break;
+        case 'restart':
+          printToConsole('warning', 'Restarting server...');
+          setTimeout(() => {
+            printToConsole('success', 'Server restarted');
+          }, 2500);
+          break;
+        case 'kill':
+          if (confirm('Force kill the server? This may cause data loss.')) {
+            printToConsole('error', 'Server killed');
           }
-        }, 1500);
-      }, 800);
+          break;
+      }
     }
 
-    function updateServerStatus(status) {
-      const el = document.getElementById('serverStatus');
-      el.textContent = status === 'online' ? 'Online' : status === 'starting' ? 'Starting...' : 'Offline';
-      el.style.color = status === 'online' ? 'var(--success)' : 
-                      status === 'starting' ? 'var(--warning)' : 'var(--danger)';
+    // Files Functions
+    function loadFiles(path) {
+      window.currentPath = path;
+      const files = window.mockFiles[path] || window.mockFiles[''];
+      
+      // Update breadcrumb
+      const breadcrumb = document.getElementById('fileBreadcrumb');
+      breadcrumb.innerHTML = '';
+      
+      const parts = path.split('/').filter(p => p);
+      let currentPath = '';
+      
+      // Root
+      const rootSpan = document.createElement('span');
+      rootSpan.className = 'breadcrumb-item';
+      rootSpan.textContent = '/';
+      rootSpan.onclick = () => loadFiles('');
+      breadcrumb.appendChild(rootSpan);
+      
+      parts.forEach((part, i) => {
+        currentPath += (i === 0 ? '' : '/') + part;
+        const sep = document.createElement('span');
+        sep.className = 'breadcrumb-separator';
+        sep.textContent = '/';
+        breadcrumb.appendChild(sep);
+        
+        const span = document.createElement('span');
+        span.className = 'breadcrumb-item';
+        span.textContent = part;
+        span.onclick = () => loadFiles(currentPath);
+        breadcrumb.appendChild(span);
+      });
+
+      // Render files table
+      const tbody = document.getElementById('filesBody');
+      tbody.innerHTML = '';
+      
+      if (path !== '') {
+        // Parent directory
+        const parentTr = document.createElement('tr');
+        parentTr.innerHTML = `
+          <td><span class="file-icon">📁</span><span class="file-name" onclick="loadFiles('${path.substring(0, path.lastIndexOf('/'))}')">..</span></td>
+          <td>-</td>
+          <td>-</td>
+          <td></td>
+        `;
+        tbody.appendChild(parentTr);
+      }
+      
+      files.forEach(file => {
+        const icon = file.type === 'folder' ? '📁' : '📄';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <span class="file-icon">${icon}</span>
+            <span class="file-name" onclick="${file.type === 'folder' ? `loadFiles('${path ? path + '/' : ''}${file.name}')` : `editFile('${path ? path + '/' : ''}${file.name}')`}">${file.name}</span>
+          </td>
+          <td>${file.size}</td>
+          <td>${file.modified}</td>
+          <td>
+            <div class="file-actions">
+              <button class="btn btn-sm btn-ghost" onclick="downloadFile('${file.name}')">⬇️</button>
+              <button class="btn btn-sm btn-ghost" onclick="renameFile('${file.name}')">✏️</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteFile('${file.name}')">🗑️</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
 
-    function startResourceSim(maxRam, maxSsd) {
-      if (window.resourceInterval) clearInterval(window.resourceInterval);
+    function navigateFile(path) {
+      loadFiles(path);
+    }
 
-      let ramPct = 15 + Math.random() * 25;
-      let cpuPct = 5 + Math.random() * 20;
-      const ssdPct = 8 + Math.random() * 15;
+    function uploadFile() {
+      showToast('Upload feature coming soon', 'info');
+    }
 
-      document.getElementById('ssdBar').style.width = ssdPct + '%';
-      document.getElementById('ssdUsage').textContent = `${(maxSsd * ssdPct / 100).toFixed(1)} GB / ${window.currentConsoleData.ssd}`;
+    function createFolder() {
+      const name = prompt('Enter folder name:');
+      if (name) showToast(`Folder '${name}' created`, 'success');
+    }
 
-      window.resourceInterval = setInterval(() => {
-        ramPct += (Math.random() - 0.5) * 6;
-        cpuPct += (Math.random() - 0.5) * 10;
-        
-        ramPct = Math.max(8, Math.min(92, ramPct));
-        cpuPct = Math.max(2, Math.min(94, cpuPct));
+    function createFile() {
+      const name = prompt('Enter file name:');
+      if (name) showToast(`File '${name}' created`, 'success');
+    }
 
-        const ramUsed = Math.round(maxRam * ramPct / 100);
-        
-        document.getElementById('ramBar').style.width = ramPct + '%';
-        document.getElementById('cpuBar').style.width = cpuPct + '%';
-        document.getElementById('ramUsage').textContent = `${ramUsed} MB / ${window.currentConsoleData.ram}`;
-        document.getElementById('cpuUsage').textContent = cpuPct.toFixed(1) + '%';
-      }, 2000);
+    function editFile(path) {
+      showToast(`Editing ${path}...`, 'info');
+    }
+
+    function downloadFile(name) {
+      showToast(`Downloading ${name}...`, 'info');
+    }
+
+    function renameFile(name) {
+      const newName = prompt('Enter new name:', name);
+      if (newName) showToast(`Renamed to ${newName}`, 'success');
+    }
+
+    function deleteFile(name) {
+      if (confirm(`Delete ${name}?`)) {
+        showToast(`Deleted ${name}`, 'info');
+      }
+    }
+
+    // Startup Functions
+    function loadStartup() {
+      const server = window.currentServerData;
+      if (!server) return;
+      
+      document.getElementById('dockerImage').textContent = server.dockerImage || 'ghcr.io/pterodactyl/games:minecraft';
+      document.getElementById('startupCommand').value = server.startup || './start.sh';
+      
+      const varsContainer = document.getElementById('variablesContainer');
+      varsContainer.innerHTML = `
+        <div class="startup-variable">
+          <div class="variable-label">
+            <span>Server Version</span>
+            <span style="color:var(--text-dim)">Required</span>
+          </div>
+          <input type="text" class="variable-input" value="latest" placeholder="e.g., latest, 1.20.4">
+        </div>
+        <div class="startup-variable">
+          <div class="variable-label">
+            <span>Max Players</span>
+            <span style="color:var(--text-dim)">Optional</span>
+          </div>
+          <input type="text" class="variable-input" value="20" placeholder="20">
+        </div>
+        <div class="startup-variable">
+          <div class="variable-label">
+            <span>Memory (MB)</span>
+            <span style="color:var(--text-dim)">Required</span>
+          </div>
+          <input type="text" class="variable-input" value="${server.ram === '2GB' ? '2048' : '256'}" placeholder="Memory in MB">
+        </div>
+      `;
+      
+      document.getElementById('eggName').textContent = server.eggName || 'Minecraft';
+      document.getElementById('eggAuthor').textContent = 'SyntaxHosting';
+      document.getElementById('eggDesc').textContent = getEggDescription(server.egg);
+    }
+
+    function getEggDescription(egg) {
+      const desc = {
+        'minecraft': 'Minecraft Java Edition server',
+        'minecraft-bedrock': 'Minecraft Bedrock Edition server',
+        'source': 'Source engine games (CS:GO, TF2, etc.)',
+        'nodejs': 'Node.js application',
+        'python': 'Python application',
+        'discord': 'Discord bot (discord.py/discord.js)'
+      };
+      return desc[egg] || 'Custom server';
+    }
+
+    function saveStartup() {
+      showToast('Startup configuration saved', 'success');
+    }
+
+    // Settings Functions
+    function updateServerName() {
+      const newName = document.getElementById('settingsServerName').value;
+      if (newName && window.currentServer && window.currentUser) {
+        window.set(window.ref(window.db, `servers/${window.currentUser.uid}/${window.currentServer}/name`), newName);
+        document.getElementById('detailServerName').textContent = newName;
+        showToast('Server name updated', 'success');
+      }
+    }
+
+    function reinstallServer() {
+      if (confirm('Reinstall server? This will reset all files.')) {
+        showToast('Server reinstall started', 'warning');
+      }
+    }
+
+    function deleteCurrentServer() {
+      if (window.currentServer && confirm('Delete this server? This cannot be undone.')) {
+        deleteServer(window.currentServer);
+      }
     }
 
     // Toast
@@ -1913,21 +2181,33 @@
     window.showLanding = showLanding;
     window.showAuth = showAuth;
     window.showDashboard = showDashboard;
-    window.showSection = showSection;
     window.scrollToPricing = scrollToPricing;
     window.doLogin = doLogin;
     window.doRegister = doRegister;
     window.logout = logout;
     window.openCreateModal = openCreateModal;
     window.closeCreateModal = closeCreateModal;
+    window.nextCreateStep = nextCreateStep;
+    window.prevCreateStep = prevCreateStep;
     window.createServer = createServer;
     window.deleteServer = deleteServer;
-    window.openConsole = openConsole;
-    window.handleTerminalKey = handleTerminalKey;
-    window.quickCommand = quickCommand;
-    window.consoleStart = consoleStart;
-    window.consoleStop = consoleStop;
-    window.consoleRestart = consoleRestart;
+    window.openServerDetail = openServerDetail;
+    window.switchTab = switchTab;
+    window.handleConsoleKey = handleConsoleKey;
+    window.serverAction = serverAction;
+    window.loadFiles = loadFiles;
+    window.navigateFile = navigateFile;
+    window.uploadFile = uploadFile;
+    window.createFolder = createFolder;
+    window.createFile = createFile;
+    window.editFile = editFile;
+    window.downloadFile = downloadFile;
+    window.renameFile = renameFile;
+    window.deleteFile = deleteFile;
+    window.saveStartup = saveStartup;
+    window.updateServerName = updateServerName;
+    window.reinstallServer = reinstallServer;
+    window.deleteCurrentServer = deleteCurrentServer;
 
     // Close modal on click outside
     document.getElementById('createModal').addEventListener('click', (e) => {
