@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SyntaxHosting – Premium Game Server Hosting</title>
+  <title>SyntaxHosting – Discord Bot Hosting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -15,20 +15,20 @@
     }
 
     :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --primary-light: #818cf8;
-      --secondary: #06b6d4;
-      --accent: #8b5cf6;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --dark: #030712;
-      --dark-light: #111827;
-      --dark-card: #1f2937;
-      --text: #f9fafb;
-      --text-dim: #9ca3af;
-      --border: #374151;
+      --primary: #5865F2; /* Discord Blurple */
+      --primary-dark: #4752c4;
+      --primary-light: #7983f5;
+      --secondary: #eb459e; /* Discord Pink */
+      --accent: #5865F2;
+      --success: #57F287; /* Discord Green */
+      --warning: #FEE75C; /* Discord Yellow */
+      --danger: #ED4245; /* Discord Red */
+      --dark: #0a0c10;
+      --dark-light: #1a1d24;
+      --dark-card: #23272a; /* Discord Dark */
+      --text: #ffffff;
+      --text-dim: #b9bbbe;
+      --border: #2c2f33;
       --glass: rgba(255, 255, 255, 0.05);
       --glass-border: rgba(255, 255, 255, 0.1);
     }
@@ -50,9 +50,8 @@
       right: 0;
       height: 100vh;
       background: 
-        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 40%);
+        radial-gradient(circle at 20% 20%, rgba(88, 101, 242, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(235, 69, 158, 0.15) 0%, transparent 40%);
       pointer-events: none;
       z-index: 0;
     }
@@ -65,7 +64,7 @@
       transform: translateX(-50%);
       width: 90%;
       max-width: 1200px;
-      background: rgba(17, 24, 39, 0.8);
+      background: rgba(35, 39, 42, 0.8);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -80,7 +79,7 @@
     .logo {
       font-size: 1.5rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.5px;
@@ -117,18 +116,18 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+      box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+      box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
     }
 
     .btn-danger {
-      background: linear-gradient(135deg, var(--danger), #dc2626);
+      background: linear-gradient(135deg, var(--danger), #c03537);
       color: white;
     }
 
@@ -155,7 +154,7 @@
     }
 
     .glass-card {
-      background: rgba(31, 41, 55, 0.7);
+      background: rgba(35, 39, 42, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
       border-radius: 20px;
@@ -177,8 +176,8 @@
     .hero-tag {
       display: inline-block;
       padding: 8px 16px;
-      background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      background: rgba(88, 101, 242, 0.1);
+      border: 1px solid rgba(88, 101, 242, 0.3);
       border-radius: 100px;
       color: var(--primary-light);
       font-weight: 600;
@@ -200,7 +199,7 @@
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -220,9 +219,10 @@
       justify-content: center;
     }
 
+    /* Stats - now as text only, no images */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 80px;
       max-width: 900px;
@@ -230,7 +230,7 @@
 
     @media (max-width: 640px) {
       .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
       }
     }
 
@@ -245,7 +245,7 @@
     .stat-number {
       font-size: 2.2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.2;
@@ -257,8 +257,8 @@
       margin-top: 8px;
     }
 
-    /* Pricing Section */
-    .pricing-section {
+    /* Discord Bots Section */
+    .bots-section {
       max-width: 1200px;
       margin: 0 auto;
       padding: 80px 20px;
@@ -279,11 +279,52 @@
       font-size: 1.1rem;
     }
 
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      background: var(--dark-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       margin-top: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .pricing-card {
@@ -297,7 +338,7 @@
 
     .pricing-card.featured {
       border-color: var(--primary);
-      background: linear-gradient(145deg, var(--dark-card), rgba(99, 102, 241, 0.1));
+      background: linear-gradient(145deg, var(--dark-card), rgba(88, 101, 242, 0.1));
       transform: scale(1.05);
     }
 
@@ -312,7 +353,7 @@
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
       padding: 6px 20px;
       border-radius: 100px;
@@ -330,7 +371,7 @@
       font-size: 3rem;
       font-weight: 800;
       margin: 20px 0;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -477,9 +518,9 @@
       border-radius: 100px;
       font-size: 0.8rem;
       font-weight: 600;
-      background: rgba(99, 102, 241, 0.1);
+      background: rgba(88, 101, 242, 0.1);
       color: var(--primary);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      border: 1px solid rgba(88, 101, 242, 0.3);
     }
 
     .server-actions {
@@ -655,7 +696,7 @@
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
       border-radius: 4px;
       transition: width 0.3s;
     }
@@ -792,7 +833,7 @@
 
     .plan-option.selected {
       border-color: var(--primary);
-      background: rgba(99, 102, 241, 0.1);
+      background: rgba(88, 101, 242, 0.1);
     }
 
     /* Toast */
@@ -850,9 +891,9 @@
   <nav class="nav">
     <div class="logo">SyntaxHosting</div>
     <div class="nav-links" id="navUnauth">
-      <button class="btn btn-ghost" onclick="showSection('pricing')">Preise</button>
+      <button class="btn btn-ghost" onclick="showSection('pricing')">Pricing</button>
       <button class="btn btn-ghost" onclick="showAuth('login')">Login</button>
-      <button class="btn btn-primary" onclick="showAuth('register')">Starten</button>
+      <button class="btn btn-primary" onclick="showAuth('register')">Get Started</button>
     </div>
     <div class="nav-links hidden" id="navAuth">
       <div class="user-chip" style="display:flex;align-items:center;gap:8px;background:var(--glass);padding:6px 16px;border-radius:100px;">
@@ -867,14 +908,15 @@
   <!-- Landing Page -->
   <div id="landingPage">
     <section class="landing">
-      <div class="hero-tag">⚡ High-Performance Server Hosting</div>
-      <h1 class="hero-title">Game Server Hosting<br><span>ohne Kompromisse.</span></h1>
-      <p class="hero-sub">Deploye deinen Server in Sekunden. NVMe SSDs, 99.9% Uptime und 24/7 Support.</p>
+      <div class="hero-tag">⚡ 99.9% Uptime Guarantee</div>
+      <h1 class="hero-title">Discord Bot Hosting<br><span>without compromises.</span></h1>
+      <p class="hero-sub">Deploy your Discord bots in seconds. NVMe SSDs, 99.9% uptime and 24/7 support for your bots.</p>
       <div class="hero-cta">
-        <button class="btn btn-primary" onclick="showAuth('register')">Kostenlos starten</button>
-        <button class="btn btn-ghost" onclick="scrollToPricing()">Preise ansehen →</button>
+        <button class="btn btn-primary" onclick="showAuth('register')">Start for free</button>
+        <button class="btn btn-ghost" onclick="scrollToPricing()">View pricing →</button>
       </div>
 
+      <!-- Stats as text only - no images -->
       <div class="stats-grid">
         <div class="stat-item">
           <div class="stat-number">99.9%</div>
@@ -882,60 +924,87 @@
         </div>
         <div class="stat-item">
           <div class="stat-number">&lt;1ms</div>
-          <div class="stat-label">Latenz</div>
+          <div class="stat-label">Latency</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">NVMe</div>
           <div class="stat-label">SSD Storage</div>
         </div>
-        <div class="stat-item">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Support</div>
+      </div>
+    </section>
+
+    <!-- Discord Bot Features -->
+    <section class="bots-section">
+      <h2 class="section-title">Perfect for Discord Bots</h2>
+      <p class="section-sub">Everything your bot needs to run 24/7 without interruptions</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-title">Python & JavaScript</div>
+          <div class="feature-desc">Support for discord.py, nextcord, py-cord, discord.js and more</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Always Online</div>
+          <div class="feature-desc">Your bot stays online 24/7 with automatic restarts</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">DDoS Protection</div>
+          <div class="feature-desc">Enterprise-grade protection for your bot</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Real-time Metrics</div>
+          <div class="feature-desc">Monitor CPU, RAM and uptime in real-time</div>
         </div>
       </div>
     </section>
 
     <!-- Pricing Section -->
     <section class="pricing-section" id="pricing">
-      <h2 class="section-title">Einfache Preise</h2>
-      <p class="section-sub">Wähle den Plan, der zu dir passt. Jederzeit upgrade- oder downgradebar.</p>
+      <h2 class="section-title">Simple Pricing</h2>
+      <p class="section-sub">Choose the plan that fits your bot. Upgrade or downgrade anytime.</p>
       
       <div class="pricing-grid">
         <!-- Free Plan -->
         <div class="pricing-card">
           <div class="plan-name">Free</div>
-          <div class="plan-price">€0<span>/Monat</span></div>
+          <div class="plan-price">€0<span>/month</span></div>
           <ul class="plan-features">
             <li>256 MB RAM</li>
             <li>2 GB NVMe SSD</li>
-            <li>1 Server maximal</li>
+            <li>1 bot maximum</li>
             <li>Basic Console</li>
             <li>Community Support</li>
+            <li>99% Uptime</li>
           </ul>
-          <button class="btn btn-ghost" style="width:100%" onclick="showAuth('register')">Kostenlos starten</button>
+          <button class="btn btn-ghost" style="width:100%" onclick="showAuth('register')">Start free</button>
         </div>
 
         <!-- Premium Plan -->
         <div class="pricing-card featured">
-          <div class="popular-badge">Beliebteste Wahl</div>
+          <div class="popular-badge">Most Popular</div>
           <div class="plan-name">Premium</div>
-          <div class="plan-price">€4.99<span>/Monat</span></div>
+          <div class="plan-price">€2.99<span>/month</span></div>
           <ul class="plan-features">
             <li>2 GB RAM</li>
             <li>20 GB NVMe SSD</li>
-            <li>Unbegrenzte Server</li>
+            <li>Unlimited bots</li>
             <li>Full Console Access</li>
             <li>Priority Support</li>
-            <li>Automatische Backups</li>
+            <li>99.9% Uptime Guarantee</li>
+            <li>Automatic Backups</li>
             <li>Custom Domains</li>
           </ul>
-          <button class="btn btn-primary" style="width:100%" onclick="showAuth('register')">Premium starten</button>
+          <button class="btn btn-primary" style="width:100%" onclick="showAuth('register')">Get Premium</button>
         </div>
       </div>
     </section>
 
     <footer class="footer">
-      © 2026 SyntaxHosting. Alle Rechte vorbehalten.
+      © 2026 SyntaxHosting. All rights reserved. Discord Bot Hosting specialized.
     </footer>
   </div>
 
@@ -943,8 +1012,8 @@
   <div id="authPage" class="hidden">
     <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;">
       <div class="card" style="max-width:400px;width:100%;">
-        <h2 class="modal-title" id="authTitle">Willkommen zurück</h2>
-        <div class="modal-sub" id="authSub">Melde dich in deinem Account an</div>
+        <h2 class="modal-title" id="authTitle">Welcome back</h2>
+        <div class="modal-sub" id="authSub">Sign in to your SyntaxHosting account</div>
         
         <div id="authError" class="hidden" style="background:rgba(239,68,68,0.1);border:1px solid var(--danger);border-radius:12px;padding:12px;margin-bottom:20px;color:var(--danger);"></div>
 
@@ -952,35 +1021,35 @@
         <div id="loginForm">
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-input" id="loginEmail" placeholder="deine@email.de">
+            <input type="email" class="form-input" id="loginEmail" placeholder="your@email.com">
           </div>
           <div class="form-group">
-            <label>Passwort</label>
+            <label>Password</label>
             <input type="password" class="form-input" id="loginPassword" placeholder="••••••••">
           </div>
-          <button class="btn btn-primary" style="width:100%" onclick="doLogin()" id="loginBtn">Einloggen</button>
+          <button class="btn btn-primary" style="width:100%" onclick="doLogin()" id="loginBtn">Sign In</button>
           <div style="text-align:center;margin-top:20px;color:var(--text-dim)">
-            Noch kein Account? <a href="#" onclick="showAuth('register')" style="color:var(--primary);text-decoration:none;">Registrieren</a>
+            No account yet? <a href="#" onclick="showAuth('register')" style="color:var(--primary);text-decoration:none;">Register</a>
           </div>
         </div>
 
         <!-- Register Form -->
         <div id="registerForm" class="hidden">
           <div class="form-group">
-            <label>Benutzername</label>
+            <label>Username</label>
             <input type="text" class="form-input" id="regName" placeholder="cooluser123">
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-input" id="regEmail" placeholder="deine@email.de">
+            <input type="email" class="form-input" id="regEmail" placeholder="your@email.com">
           </div>
           <div class="form-group">
-            <label>Passwort</label>
-            <input type="password" class="form-input" id="regPassword" placeholder="mindestens 6 Zeichen">
+            <label>Password</label>
+            <input type="password" class="form-input" id="regPassword" placeholder="min. 6 characters">
           </div>
-          <button class="btn btn-primary" style="width:100%" onclick="doRegister()" id="regBtn">Account erstellen</button>
+          <button class="btn btn-primary" style="width:100%" onclick="doRegister()" id="regBtn">Create Account</button>
           <div style="text-align:center;margin-top:20px;color:var(--text-dim)">
-            Hast du schon einen Account? <a href="#" onclick="showAuth('login')" style="color:var(--primary);text-decoration:none;">Einloggen</a>
+            Already have an account? <a href="#" onclick="showAuth('login')" style="color:var(--primary);text-decoration:none;">Sign in</a>
           </div>
         </div>
       </div>
@@ -992,10 +1061,10 @@
     <div class="dashboard">
       <div class="dash-header">
         <div class="welcome-text">
-          <h1>Willkommen, <span id="dashboardUsername">User</span>!</h1>
-          <p style="color:var(--text-dim)">Verwalte deine Server hier</p>
+          <h1>Welcome, <span id="dashboardUsername">User</span>!</h1>
+          <p style="color:var(--text-dim)">Manage your Discord bots here</p>
         </div>
-        <button class="btn btn-primary" onclick="openCreateModal()">+ Neuen Server erstellen</button>
+        <button class="btn btn-primary" onclick="openCreateModal()">+ New Bot</button>
       </div>
 
       <div class="dash-stats" id="dashboardStats">
@@ -1003,9 +1072,9 @@
       </div>
 
       <div style="margin-top:40px;">
-        <h2 style="font-size:1.5rem;margin-bottom:20px;">Deine Server</h2>
+        <h2 style="font-size:1.5rem;margin-bottom:20px;">Your Bots</h2>
         <div id="serversList" class="servers-list">
-          <!-- Servers will be loaded here -->
+          <!-- Bots will be loaded here -->
         </div>
       </div>
     </div>
@@ -1017,7 +1086,7 @@
       <div class="console-header">
         <button class="back-btn" onclick="showDashboard()">← Dashboard</button>
         <div>
-          <h1 id="consoleServerName" style="font-size:1.8rem;">Server Name</h1>
+          <h1 id="consoleServerName" style="font-size:1.8rem;">Bot Name</h1>
           <p style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;" id="consoleServerId">ID: -</p>
         </div>
         <div style="margin-left:auto;display:flex;gap:8px;">
@@ -1033,18 +1102,18 @@
             <div class="terminal-dot red"></div>
             <div class="terminal-dot yellow"></div>
             <div class="terminal-dot green"></div>
-            <div class="terminal-title" id="terminalTitle">console</div>
+            <div class="terminal-title" id="terminalTitle">bot-console</div>
           </div>
           <div class="terminal-body" id="terminalBody"></div>
           <div class="terminal-input">
             <span class="terminal-prompt">$</span>
-            <input type="text" class="terminal-input-field" id="terminalInput" placeholder="Befehl eingeben..." onkeydown="handleTerminalKey(event)">
+            <input type="text" class="terminal-input-field" id="terminalInput" placeholder="Enter command..." onkeydown="handleTerminalKey(event)">
           </div>
         </div>
 
         <div class="console-sidebar">
           <div class="sidebar-card">
-            <div class="sidebar-title">Ressourcen</div>
+            <div class="sidebar-title">Resources</div>
             <div class="resource-bar">
               <div class="resource-label"><span>RAM</span><span id="ramUsage">0 / 256 MB</span></div>
               <div class="progress-track"><div class="progress-fill" id="ramBar" style="width:0%"></div></div>
@@ -1060,20 +1129,21 @@
           </div>
 
           <div class="sidebar-card">
-            <div class="sidebar-title">Server Info</div>
+            <div class="sidebar-title">Bot Info</div>
             <div class="info-row"><span class="info-key">Status</span><span class="info-value" id="serverStatus">Offline</span></div>
             <div class="info-row"><span class="info-key">Plan</span><span class="info-value" id="serverPlan">-</span></div>
             <div class="info-row"><span class="info-key">RAM</span><span class="info-value" id="serverRam">-</span></div>
             <div class="info-row"><span class="info-key">SSD</span><span class="info-value" id="serverSsd">-</span></div>
-            <div class="info-row"><span class="info-key">Erstellt</span><span class="info-value" id="serverCreated">-</span></div>
+            <div class="info-row"><span class="info-key">Created</span><span class="info-value" id="serverCreated">-</span></div>
           </div>
 
           <div class="sidebar-card">
             <div class="sidebar-title">Quick Commands</div>
             <div style="display:flex;flex-direction:column;gap:8px;">
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('help')">help - Hilfe</button>
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('status')">status - Status</button>
-              <button class="btn btn-sm btn-ghost" onclick="quickCommand('clear')">clear - Console leeren</button>
+              <button class="btn btn-sm btn-ghost" onclick="quickCommand('help')">help - Show commands</button>
+              <button class="btn btn-sm btn-ghost" onclick="quickCommand('status')">status - Bot status</button>
+              <button class="btn btn-sm btn-ghost" onclick="quickCommand('logs')">logs - Show logs</button>
+              <button class="btn btn-sm btn-ghost" onclick="quickCommand('clear')">clear - Clear console</button>
             </div>
           </div>
         </div>
@@ -1081,51 +1151,47 @@
     </div>
   </div>
 
-  <!-- Create Server Modal -->
+  <!-- Create Bot Modal -->
   <div class="modal-overlay" id="createModal">
     <div class="modal">
       <button class="modal-close" onclick="closeCreateModal()">✕</button>
-      <h2 class="modal-title">Server erstellen</h2>
-      <p class="modal-sub">Konfiguriere deinen neuen Server</p>
+      <h2 class="modal-title">Create New Bot</h2>
+      <p class="modal-sub">Deploy your Discord bot in seconds</p>
 
       <div id="freeLimitNote" class="hidden" style="background:rgba(245,158,11,0.1);border:1px solid var(--warning);border-radius:12px;padding:12px;margin-bottom:20px;color:var(--warning);">
-        ⚠️ Free Plan erlaubt nur 1 Server. Upgrade für unbegrenzte Server.
+        ⚠️ Free plan allows only 1 bot. Upgrade for unlimited bots.
       </div>
 
       <div id="createError" class="hidden" style="background:rgba(239,68,68,0.1);border:1px solid var(--danger);border-radius:12px;padding:12px;margin-bottom:20px;color:var(--danger);"></div>
 
       <div class="form-group">
-        <label>Server Name</label>
-        <input type="text" class="form-input" id="serverName" placeholder="mein-awesome-server">
+        <label>Bot Name</label>
+        <input type="text" class="form-input" id="serverName" placeholder="my-discord-bot">
       </div>
 
       <div class="form-group">
-        <label>Plan wählen</label>
+        <label>Choose Plan</label>
         <div class="plan-selector">
           <div class="plan-option selected" id="freePlan" onclick="selectPlan('free')">
             <div style="font-weight:700;margin-bottom:4px;">Free Plan</div>
-            <div style="color:var(--text-dim);font-size:0.85rem;">256MB RAM · 2GB SSD</div>
+            <div style="color:var(--text-dim);font-size:0.85rem;">256MB RAM · 2GB SSD · 1 bot</div>
           </div>
           <div class="plan-option" id="premiumPlan" onclick="selectPlan('premium')">
             <div style="font-weight:700;margin-bottom:4px;">Premium</div>
-            <div style="color:var(--text-dim);font-size:0.85rem;">2GB RAM · 20GB SSD · €4.99/mo</div>
+            <div style="color:var(--text-dim);font-size:0.85rem;">2GB RAM · 20GB SSD · Unlimited bots · €2.99/mo</div>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label>Server Typ</label>
+        <label>Bot Type</label>
         <select class="form-input" id="serverType">
-          <option value="minecraft">Minecraft Java Edition</option>
-          <option value="minecraft_bedrock">Minecraft Bedrock</option>
-          <option value="nodejs">Node.js App</option>
-          <option value="python">Python App</option>
-          <option value="discord_bot">Discord Bot</option>
-          <option value="custom">Custom Server</option>
+          <option value="python">Python (discord.py, nextcord, py-cord)</option>
+          <option value="javascript">JavaScript (discord.js)</option>
         </select>
       </div>
 
-      <button class="btn btn-primary" style="width:100%;padding:16px;" onclick="createServer()" id="createBtn">Server deployen</button>
+      <button class="btn btn-primary" style="width:100%;padding:16px;" onclick="createServer()" id="createBtn">Deploy Bot</button>
     </div>
   </div>
 
@@ -1216,13 +1282,13 @@
       document.getElementById('consolePage').classList.add('hidden');
 
       if (mode === 'login') {
-        document.getElementById('authTitle').textContent = 'Willkommen zurück';
-        document.getElementById('authSub').textContent = 'Melde dich in deinem Account an';
+        document.getElementById('authTitle').textContent = 'Welcome back';
+        document.getElementById('authSub').textContent = 'Sign in to your SyntaxHosting account';
         document.getElementById('loginForm').classList.remove('hidden');
         document.getElementById('registerForm').classList.add('hidden');
       } else {
-        document.getElementById('authTitle').textContent = 'Account erstellen';
-        document.getElementById('authSub').textContent = 'Starte kostenlos, keine Kreditkarte nötig';
+        document.getElementById('authTitle').textContent = 'Create account';
+        document.getElementById('authSub').textContent = 'Start for free, no credit card required';
         document.getElementById('loginForm').classList.add('hidden');
         document.getElementById('registerForm').classList.remove('hidden');
       }
@@ -1259,7 +1325,7 @@
       const errorEl = document.getElementById('authError');
 
       if (!email || !password) {
-        showError('Bitte Email und Passwort eingeben');
+        showError('Please enter email and password');
         return;
       }
 
@@ -1270,7 +1336,7 @@
         await window.signInWithEmailAndPassword(window.auth, email, password);
       } catch (err) {
         btn.disabled = false;
-        btn.innerHTML = 'Einloggen';
+        btn.innerHTML = 'Sign In';
         showError(getFirebaseError(err.code));
       }
     }
@@ -1283,11 +1349,11 @@
       const errorEl = document.getElementById('authError');
 
       if (!name || !email || !password) {
-        showError('Bitte alle Felder ausfüllen');
+        showError('Please fill in all fields');
         return;
       }
       if (password.length < 6) {
-        showError('Passwort muss mindestens 6 Zeichen lang sein');
+        showError('Password must be at least 6 characters');
         return;
       }
 
@@ -1299,14 +1365,14 @@
         await window.updateProfile(cred.user, { displayName: name });
       } catch (err) {
         btn.disabled = false;
-        btn.innerHTML = 'Account erstellen';
+        btn.innerHTML = 'Create Account';
         showError(getFirebaseError(err.code));
       }
     }
 
     async function logout() {
       await window.signOut(window.auth);
-      showToast('Erfolgreich ausgeloggt', 'info');
+      showToast('Logged out successfully', 'info');
     }
 
     function showError(msg) {
@@ -1317,18 +1383,18 @@
 
     function getFirebaseError(code) {
       const errors = {
-        'auth/user-not-found': 'Kein Account mit dieser Email gefunden',
-        'auth/wrong-password': 'Falsches Passwort',
-        'auth/invalid-email': 'Ungültige Email-Adresse',
-        'auth/email-already-in-use': 'Email bereits registriert',
-        'auth/weak-password': 'Passwort zu schwach',
-        'auth/invalid-credential': 'Ungültige Anmeldedaten',
-        'auth/too-many-requests': 'Zu viele Versuche. Später nochmal probieren'
+        'auth/user-not-found': 'No account found with this email',
+        'auth/wrong-password': 'Wrong password',
+        'auth/invalid-email': 'Invalid email address',
+        'auth/email-already-in-use': 'Email already registered',
+        'auth/weak-password': 'Password is too weak',
+        'auth/invalid-credential': 'Invalid credentials',
+        'auth/too-many-requests': 'Too many attempts. Try again later.'
       };
-      return errors[code] || 'Ein Fehler ist aufgetreten';
+      return errors[code] || 'An error occurred';
     }
 
-    // Servers
+    // Servers (Bots)
     async function loadServers() {
       if (!window.currentUser) return;
       
@@ -1347,10 +1413,10 @@
       if (Object.keys(servers).length === 0) {
         container.innerHTML = `
           <div class="card" style="text-align:center;padding:60px;">
-            <div style="font-size:3rem;margin-bottom:16px;">🖥️</div>
-            <h3 style="margin-bottom:8px;">Noch keine Server</h3>
-            <p style="color:var(--text-dim);margin-bottom:20px;">Erstelle deinen ersten Server, um zu starten</p>
-            <button class="btn btn-primary" onclick="openCreateModal()">Server erstellen</button>
+            <div style="font-size:3rem;margin-bottom:16px;">🤖</div>
+            <h3 style="margin-bottom:8px;">No bots yet</h3>
+            <p style="color:var(--text-dim);margin-bottom:20px;">Create your first Discord bot to get started</p>
+            <button class="btn btn-primary" onclick="openCreateModal()">Create Bot</button>
           </div>
         `;
         return;
@@ -1360,7 +1426,7 @@
       Object.entries(servers).forEach(([id, server]) => {
         const statusClass = server.status === 'online' ? 'status-online' : 
                            server.status === 'starting' ? 'status-starting' : 'status-offline';
-        const date = server.createdAt ? new Date(server.createdAt).toLocaleDateString('de-DE') : '?';
+        const date = server.createdAt ? new Date(server.createdAt).toLocaleDateString('en-US') : '?';
         
         const el = document.createElement('div');
         el.className = 'server-item';
@@ -1368,12 +1434,12 @@
           <div class="server-status ${statusClass}"></div>
           <div class="server-info">
             <div class="server-name">${escapeHtml(server.name)}</div>
-            <div class="server-meta">${server.type || 'Custom'} · ${server.ram} RAM · Erstellt ${date}</div>
+            <div class="server-meta">${server.type === 'python' ? '🐍 Python' : '📘 JavaScript'} · ${server.ram} RAM · Created ${date}</div>
           </div>
           <div class="server-plan">${server.plan === 'premium' ? 'Premium' : 'Free'}</div>
           <div class="server-actions">
             <button class="btn btn-sm btn-primary" onclick="openConsole('${id}')">Console</button>
-            <button class="btn btn-sm btn-danger" onclick="deleteServer('${id}')">Löschen</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteServer('${id}')">Delete</button>
           </div>
         `;
         container.appendChild(el);
@@ -1391,7 +1457,7 @@
 
       statsContainer.innerHTML = `
         <div class="stat-card">
-          <div class="stat-card-label">Server</div>
+          <div class="stat-card-label">Bots</div>
           <div class="stat-card-value">${totalServers}</div>
         </div>
         <div class="stat-card">
@@ -1410,16 +1476,16 @@
     }
 
     async function deleteServer(serverId) {
-      if (!window.currentUser || !confirm('Server wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.')) return;
+      if (!window.currentUser || !confirm('Delete this bot? This action cannot be undone.')) return;
       
       try {
         await window.remove(window.ref(window.db, `servers/${window.currentUser.uid}/${serverId}`));
-        showToast('Server gelöscht', 'info');
+        showToast('Bot deleted', 'info');
         if (window.currentConsoleServer === serverId) {
           showDashboard();
         }
       } catch (err) {
-        showToast('Fehler beim Löschen', 'error');
+        showToast('Error deleting bot', 'error');
       }
     }
 
@@ -1479,11 +1545,11 @@
       const errorEl = document.getElementById('createError');
 
       if (!name) {
-        showCreateError('Bitte einen Servernamen eingeben');
+        showCreateError('Please enter a bot name');
         return;
       }
       if (!/^[a-zA-Z0-9_-]+$/.test(name)) {
-        showCreateError('Nur Buchstaben, Zahlen, - und _ erlaubt');
+        showCreateError('Only letters, numbers, - and _ allowed');
         return;
       }
 
@@ -1491,13 +1557,13 @@
       if (window.selectedPlan === 'free') {
         const freeServers = servers.filter(s => s.plan === 'free');
         if (freeServers.length >= 1) {
-          showCreateError('Free Plan erlaubt nur 1 Server. Upgrade für mehr.');
+          showCreateError('Free plan allows only 1 bot. Upgrade for more.');
           return;
         }
       }
 
       btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span> Wird erstellt...';
+      btn.innerHTML = '<span class="spinner"></span> Deploying...';
 
       try {
         const newRef = window.push(window.ref(window.db, `servers/${window.currentUser.uid}`));
@@ -1516,13 +1582,13 @@
         });
 
         closeCreateModal();
-        showToast('Server erfolgreich erstellt!', 'success');
+        showToast('Bot deployed successfully!', 'success');
       } catch (err) {
-        showCreateError('Fehler: ' + err.message);
+        showCreateError('Error: ' + err.message);
       }
 
       btn.disabled = false;
-      btn.innerHTML = 'Server deployen';
+      btn.innerHTML = 'Deploy Bot';
     }
 
     function showCreateError(msg) {
@@ -1541,13 +1607,13 @@
 
       document.getElementById('consoleServerName').textContent = server.name;
       document.getElementById('consoleServerId').textContent = `ID: ${serverId.substring(0,8)}...`;
-      document.getElementById('terminalTitle').textContent = `${server.name} — Console`;
+      document.getElementById('terminalTitle').textContent = `${server.name} — console`;
 
       // Update sidebar
       document.getElementById('serverPlan').textContent = server.plan === 'premium' ? 'Premium' : 'Free';
       document.getElementById('serverRam').textContent = server.ram;
       document.getElementById('serverSsd').textContent = server.ssd;
-      document.getElementById('serverCreated').textContent = server.createdAt ? new Date(server.createdAt).toLocaleDateString('de-DE') : '?';
+      document.getElementById('serverCreated').textContent = server.createdAt ? new Date(server.createdAt).toLocaleDateString('en-US') : '?';
       
       const maxRam = server.ram === '2GB' ? 2048 : 256;
       const maxSsd = server.ssd === '20GB' ? 20 : 2;
@@ -1565,17 +1631,18 @@
       terminal.innerHTML = '';
       window.consoleHistory = [];
 
-      printToTerminal('info', `=== SyntaxHosting Console v1.0 ===`);
-      printToTerminal('dim', `Server: ${server.name}`);
+      printToTerminal('info', `=== SyntaxHosting Bot Console v1.0 ===`);
+      printToTerminal('dim', `Bot: ${server.name}`);
+      printToTerminal('dim', `Type: ${server.type === 'python' ? 'Python (discord.py)' : 'JavaScript (discord.js)'}`);
       printToTerminal('dim', `Plan: ${server.plan === 'premium' ? 'Premium' : 'Free'} | RAM: ${server.ram} | SSD: ${server.ssd}`);
-      printToTerminal('dim', `Tippe 'help' für alle Befehle`);
+      printToTerminal('dim', `Type 'help' for available commands`);
       printToTerminal('', '');
 
       if (server.status === 'online') {
-        printToTerminal('success', `[${getTime()}] Server ist online`);
+        printToTerminal('success', `[${getTime()}] Bot is online`);
         startResourceSim(maxRam, maxSsd);
       } else {
-        printToTerminal('warning', `[${getTime()}] Server ist offline. Nutze 'start' zum starten.`);
+        printToTerminal('warning', `[${getTime()}] Bot is offline. Use 'start' to start it.`);
       }
 
       showDashboard();
@@ -1585,7 +1652,7 @@
     }
 
     function getTime() {
-      return new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     }
 
     function printToTerminal(type, text) {
@@ -1638,14 +1705,15 @@
 
       switch(main) {
         case 'help':
-          printToTerminal('info', 'Verfügbare Befehle:');
-          printToTerminal('', '  start     - Server starten');
-          printToTerminal('', '  stop      - Server stoppen');
-          printToTerminal('', '  restart   - Server neustarten');
-          printToTerminal('', '  status    - Serverstatus anzeigen');
-          printToTerminal('', '  info      - Serverinformationen');
-          printToTerminal('', '  clear     - Console leeren');
-          printToTerminal('', '  echo [txt] - Text ausgeben');
+          printToTerminal('info', 'Available commands:');
+          printToTerminal('', '  start     - Start the bot');
+          printToTerminal('', '  stop      - Stop the bot');
+          printToTerminal('', '  restart   - Restart the bot');
+          printToTerminal('', '  status    - Show bot status');
+          printToTerminal('', '  logs      - Show recent logs');
+          printToTerminal('', '  info      - Show bot information');
+          printToTerminal('', '  clear     - Clear console');
+          printToTerminal('', '  echo [txt] - Echo text');
           break;
 
         case 'start':
@@ -1664,14 +1732,20 @@
           printToTerminal('', `Status: ${document.getElementById('serverStatus').textContent}`);
           break;
 
+        case 'logs':
+          printToTerminal('info', '[SYSTEM] Bot started');
+          printToTerminal('info', '[DISCORD] Logged in as Bot');
+          printToTerminal('success', '[DISCORD] Ready!');
+          break;
+
         case 'info':
           const server = window.currentConsoleData;
-          printToTerminal('info', 'Server Informationen:');
+          printToTerminal('info', 'Bot Information:');
           printToTerminal('', `  Name:   ${server.name}`);
+          printToTerminal('', `  Type:   ${server.type === 'python' ? 'Python' : 'JavaScript'}`);
           printToTerminal('', `  Plan:   ${server.plan}`);
           printToTerminal('', `  RAM:    ${server.ram}`);
           printToTerminal('', `  SSD:    ${server.ssd}`);
-          printToTerminal('', `  Typ:    ${server.type}`);
           break;
 
         case 'clear':
@@ -1683,29 +1757,29 @@
           break;
 
         default:
-          printToTerminal('error', `Befehl nicht gefunden: ${main}`);
+          printToTerminal('error', `Command not found: ${main}. Type 'help' for available commands.`);
       }
     }
 
     function consoleStart() {
       if (!window.currentConsoleServer) return;
       
-      printToTerminal('warning', `[${getTime()}] Starte Server...`);
+      printToTerminal('warning', `[${getTime()}] Starting bot...`);
       window.serverStatus = 'starting';
       updateServerStatus('starting');
 
       setTimeout(() => {
-        printToTerminal('info', `[${getTime()}] Lade Ressourcen...`);
+        printToTerminal('info', `[${getTime()}] Loading bot files...`);
       }, 800);
       
       setTimeout(() => {
-        printToTerminal('info', `[${getTime()}] Initialisiere Runtime...`);
+        printToTerminal('info', `[${getTime()}] Initializing Discord client...`);
       }, 1600);
       
       setTimeout(() => {
         window.serverStatus = 'online';
         updateServerStatus('online');
-        printToTerminal('success', `[${getTime()}] Server erfolgreich gestartet!`);
+        printToTerminal('success', `[${getTime()}] Bot started successfully!`);
         
         const server = window.currentConsoleData;
         const maxRam = server.ram === '2GB' ? 2048 : 256;
@@ -1722,7 +1796,7 @@
     function consoleStop() {
       if (!window.currentConsoleServer) return;
       
-      printToTerminal('warning', `[${getTime()}] Stoppe Server...`);
+      printToTerminal('warning', `[${getTime()}] Stopping bot...`);
       
       if (window.resourceInterval) {
         clearInterval(window.resourceInterval);
@@ -1732,7 +1806,7 @@
       setTimeout(() => {
         window.serverStatus = 'offline';
         updateServerStatus('offline');
-        printToTerminal('info', `[${getTime()}] Server gestoppt`);
+        printToTerminal('info', `[${getTime()}] Bot stopped`);
         
         // Reset resources
         document.getElementById('ramBar').style.width = '0%';
@@ -1749,7 +1823,7 @@
     function consoleRestart() {
       if (!window.currentConsoleServer) return;
       
-      printToTerminal('warning', `[${getTime()}] Starte Server neu...`);
+      printToTerminal('warning', `[${getTime()}] Restarting bot...`);
       
       if (window.resourceInterval) {
         clearInterval(window.resourceInterval);
@@ -1760,12 +1834,12 @@
       updateServerStatus('starting');
 
       setTimeout(() => {
-        printToTerminal('info', `[${getTime()}] Server gestoppt. Starte neu...`);
+        printToTerminal('info', `[${getTime()}] Bot stopped. Restarting...`);
         
         setTimeout(() => {
           window.serverStatus = 'online';
           updateServerStatus('online');
-          printToTerminal('success', `[${getTime()}] Server erfolgreich neugestartet!`);
+          printToTerminal('success', `[${getTime()}] Bot restarted successfully!`);
           
           const server = window.currentConsoleData;
           const maxRam = server.ram === '2GB' ? 2048 : 256;
@@ -1781,7 +1855,7 @@
 
     function updateServerStatus(status) {
       const el = document.getElementById('serverStatus');
-      el.textContent = status === 'online' ? 'Online' : status === 'starting' ? 'Startet...' : 'Offline';
+      el.textContent = status === 'online' ? 'Online' : status === 'starting' ? 'Starting...' : 'Offline';
       el.style.color = status === 'online' ? 'var(--success)' : 
                       status === 'starting' ? 'var(--warning)' : 'var(--danger)';
     }
